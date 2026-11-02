@@ -7,6 +7,10 @@
 \usepackage{lipsum}
 \let\bs\blacksquare
 
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+
 \renewcommand{\Mat}{\mathrm{M}}
 
 \setlength{\parindent}{0pt}
@@ -109,6 +113,1619 @@ $\mcal{B}, \mcal{C}, \mcal{D}$
 \end{itemize}
 
 \part{חזרה}
+
+\chapter{העתקות לינאריות ומטריצות מייצגות}
+
+\section{הגדרות ותכונות בסיסיות}
+
+במתמטיקה, כאשר אנו עובדות עם שדה $\FF$, כמו
+$\QQ, \RR, \CC, \ZZ_p$,
+או עם פונקציות לתוך $\FF$ או על $\FF^n$, יש על האוביקט שלנו פעולת חיבור וכפל בסקלר. כדי לדבר על אלו בכלליות נתעסק עם מרחבים וקטוריים. מרחב וקטורי מעל שדה
+$\FF$
+הוא קבוצה עם חיבור וכפל בסקלר (איבר מהשדה $\FF$), המקיימת מספר תכונות.
+
+\begin{remark}
+הקבוצות
+$\ZZ, \Mat_n\prs{\RR}$
+אינן שדות, כי לא כל איבר שונה מאפס בהן הפיך. אלו חוגים, וניתן באופן דומה למרחבים וקטוריים לדבר על מבנים עם חיבור וכפל בסקלר מחוג (במקום שדה), הנקראים
+\emph{מודולים}.
+זה מחוץ להיקף של הקורס שלנו, וניתן ללמוד עליהם בקורסים בתורת המודולים ובאלגברה קומוטטיבית בהמשך התואר.
+\end{remark}
+
+כדי להתעסק בפונקציות מעניינות על מרחבים וקטוריים, נרצה להסתכל לא על פונקציות כלליות בינם אלא על פונקציות המכבדות את שתי הפעולות האלו של חיבור וכפל בסקלר.
+
+\begin{definition}[העתקה לינארית]
+יהיו
+$V,W$
+מרחבים וקטוריים סוף־מימדיים מעל אותו שדה
+$\FF$.
+העתקה
+$T \colon V \to W$
+נקראת
+\emph{לינארית}
+אם היא:
+\begin{description}
+\item[אדיטיבית:]
+\begin{align*}
+\forall u,v \in V: T\prs{u+v} = T\prs{u} + T\prs{v}
+\end{align*}
+\item[הומוגנית:]
+\begin{align*}
+\forall \alpha \in \FF, v \in V: T\prs{\alpha v} = \alpha T\prs{v}
+\end{align*}
+\end{description}
+\end{definition}
+
+\begin{notation}
+נסמן את אוסף ההעתקות הלינאריות הזה בתור
+$\Hom_\FF\prs{V,W}$,
+ואם
+$V=W$
+נסמנו
+$\End_\FF\prs{V}$.
+איבריהם נקראים הומומורפיזמים ואנדומורפיזמים לינאריים, או העתקות ואופרטורים לינאריים, בהתאמה.
+\end{notation}
+
+\begin{examples}
+\begin{enumerate}
+\item סיבוב של המישור סביב הראשית הוא אופרטור לינארי.
+
+\item שיקוף במישור דרך ישר העובר בראשית הוא אופרטור לינארי.
+
+\item עבור
+קטע
+$I \coloneqq \brs{a,b} \subseteq \RR$
+ו־%
+$X \subseteq \mathcal{C}^\infty\prs{I,\RR}$
+קבוצת הפונקציות החלקות מ־%
+$I$
+ל־%
+$\RR$,
+הנגזרת
+$D \colon X \to X$
+היא אופרטור לינארי.
+
+\item עבור אותה קבוצה
+$X$,
+האינטגרל
+$\int_a^x \prs{\cdot} \diff t \colon X \to X$
+הוא אופרטור לינארי.
+
+\item עבור אותה קבוצה
+$X$,
+הצבה של
+$x-1$
+בפונקציה הינו אופרטור לינארי
+$f\prs{x} \mapsto f\prs{x-1}$.
+
+\item נוכל לתאר מערכת משוואות לינארית בעזרת העתקה לינארית.
+למשל אם נתונה לנו המערכת
+\begin{align*}
+x + 2y + 3z = 0 \\
+3x + 2y + z = 0
+\end{align*}
+נוכל לכתוב העתקה
+$T \colon \RR^3 \to \RR^2$
+על ידי
+\begin{align*}
+T\pmat{x \\ y \\ z} = \pmat{x + 2y + 3z \\ 3x + 2y + z}
+\end{align*}
+ואז פתרונות המערכת הם בדיוק הוקטורים
+$\pmat{x \\ y \\ z}$
+עבורם
+$T \pmat{x \\ y \\ z} = \vec{0} = \pmat{0 \\ 0}$.
+
+\item נוכל לתאר תהליכים בעזרת אופרטורים לינאריים. למשל, נניח שיש לנו
+$10000$
+שקל ובסוף כל שנה אנחנו מרוויחות
+$5\%$
+מההון שלנו ואז משלמות
+$100$
+שקל עמלות.
+בסוף השנה הראשונה יהיו לנו
+$1.05 \cdot 10000 - 100$
+שקלים. נגדיר
+$v_0 = \pmat{10000 \\ 100}$
+וגם
+\[T\pmat{x \\ y} = \pmat{1.05 \cdot x - y \\ y}\]
+ואז המקדם הראשון של
+$T^n v_0$
+יהיה ההון שברשותנו בסוף השנה ה־%
+$t$.
+\end{enumerate}
+\end{examples}
+
+כדי לבצע חישובים הנוגעים לוקטורים ואופרטורים לינאריים, וכדי שנוכל לתרגם בין מערכות קואורדינטות אחרות במרחב, נרצה לתאר וקטורים ואופרטורים כרשימות של מספרים.
+
+\begin{example}
+נסתכל למשל על שיקוף במישור דרך הישר
+$x=y$,
+שנסמנו
+$T$.
+כדי לחשב את
+$T \pmat{x \\ y}$
+נרצה להיעזר בוקטורים
+$u,v \in \RR^2$
+שקל לחשב את פעולת
+$T$
+עליהם. הוקטור
+$u = \pmat{1 \\ 1}$
+נמצא על הישר
+$x=y$
+ולכן
+$T\prs{u} = u$.
+אם ניקח וקטור שניצב לישר זה נקבל כי
+$T$
+שולח אותו לנגדי שלו, ולכן עבור
+$v = \pmat{-1 \\ 1}$
+נקבל
+$T\prs{v} = -v$.
+
+כעת, כדי לחשב את
+$T\pmat{x \\ y}$
+נוכל לכתוב
+\begin{align*}
+\pmat{x \\ y} = \frac{1}{2} \pmat{x+y \\ x+y} + \frac{1}{2} \pmat{x - y \\ y - x} = \frac{x+y}{2} u + \frac{x-y}{2} v
+\end{align*}
+ונקבל כי
+\begin{align*}
+\text{.} T\pmat{x \\ y} = \frac{x+y}{2} T\prs{u} + \frac{x-y}{2} T\prs{v} = \frac{x+y}{2} u - \frac{x-y}{2} v = \pmat{\frac{x+y}{2} - \frac{x-y}{2} \\ \frac{x+y}{2} + \frac{x-y}{2}} = \pmat{y \\ x}
+\end{align*}
+\end{example}
+
+כדי לדון באופן כללי ביצוג כזה של וקטורים בעזרת וקטורים אחרים, נגדיר וקטורי קואורדינטות.
+
+\begin{definition}[וקטור קואורדינטות]
+יהי
+$V$
+מרחב וקטורי סוף־מימדי מעל שדה
+$\mbb{F}$,
+יהי
+$\mcal{B} = \prs{v_1, \ldots, v_n}$
+בסיס של
+$V$
+ויהי
+$v \in V$.
+\emph{וקטור הקואורדינטות של
+$v$
+לפי הבסיס
+$B$}
+הוא הוקטור
+$\brs{v}_\mcal{B} = \pmat{\alpha_1 \\ \vdots \\ \alpha_n}$
+כאשר
+$\alpha_1, \ldots, \alpha_n \in \mbb{F}$
+היחידים עבורם
+\[\text{.}v = \sum_{i \in [n]} \alpha_i v_i \coloneqq \alpha_1 v_1 + \ldots + \alpha_n v_n\]
+\end{definition}
+
+\begin{remark}
+ההעתקה
+\begin{align*}
+\rho_\mcal{B} \colon V &\to \mbb{F}^n \\
+v &\mapsto \brs{v}_\mcal{B}
+\end{align*}
+היא איזומורפיזם לינארי.
+\end{remark}
+
+כעת, נוכל לתאר העתקה לינארית באמצעות רשימת מספרים. ההעתקה נקבעת על ידי פעולתה על איברי בסיס, לכן עבור העתקה
+$T \colon V \to W$
+ובסיס
+$\mcal{B} = \prs{v_1, \ldots, v_n}$
+של
+$V$
+די להסתכל על
+$T\prs{v_1}, \ldots, T\prs{v_n}$.
+כיוון שאלו וקטורים ב־%
+$V$,
+שיכולים להיות פונקציות, מטריצות וכו', נסתכל על וקטורי הקואורדינטות שלהם לפי בסיס
+$\mcal{C}$
+של
+$W$.
+את אלו נוכל לסדר כעמודות מטריצה, שתיקרא מטריצה מייצגת של
+$T$.
+
+\begin{definition}[מטריצה מייצגת]
+יהיו
+$V,W$
+מרחבים וקטורים סוף־מימדיים מעל אותו שדה
+$\mbb{F}$
+עם בסיסים
+$\mcal{B}, \mcal{C}$
+בהתאמה, ונסמן
+\[\text{.} \mcal{B} = \prs{v_1, \ldots, v_n}\]
+נסמן גם
+$n \coloneqq \dim\prs{V}$
+ו־%
+$m \coloneqq \dim\prs{W}$.
+עבור
+$T \in \Hom_{\mbb{F}}\prs{V,W}$
+נגדיר
+\[\text{.} \brs{T}^\mcal{B}_\mcal{C} = \pmat{\vert & & \vert \\ \brs{T\prs{v_1}}_\mcal{C} & \cdots & \brs{T\prs{v_n}}_\mcal{C} \\ \vert & & \vert} \in \Mat_{m \times n}\prs{\mbb{F}}\]
+\end{definition}
+
+\begin{theorem}[כפל מטריצות]
+תהי
+$A \in \Mat_{m \times n}\prs{\mbb{F}}$
+ויהי
+$\mcal{E} = \prs{e_1, \ldots, e_m}$
+הבסיס הסטנדרטי של
+$\mbb{F}^n$.
+אז:
+\begin{enumerate}[label = (\roman*)]
+\item
+לכל
+$i \in [m]$
+מתקיים כי
+$A e_i$
+העמודה ה־%
+$i$
+של
+$A$.
+\item
+לכל
+$B = \pmat{\vert & & \vert \\ b_1 & \cdots & b_\ell \\ \vert & & \vert} \in \Mat_{n \times \ell}\prs{\mbb{F}}$
+מתקיים
+$AB = \pmat{\vert & & \vert \\ A b_1 & \cdots & A b_\ell \\ \vert & & \vert}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{exercisechap}
+הראו שניתן לשחזר את ההגדרה של כפל מטריצות משתי התכונות במשפט.
+\end{exercisechap}
+
+\begin{remark}
+ההעתקה
+\begin{align*}
+\eta^\mcal{B}_\mcal{C} \colon \Hom_{\mbb{F}}\prs{V,B} &\to \Mat_{m \times n}\prs{\mbb{F}} \\
+T &\mapsto \brs{T}^\mcal{B}_\mcal{C}
+\end{align*}
+היא איזומורפיזם לינארי.
+\end{remark}
+
+\begin{proposition}
+תהי
+$T \in \Hom_{\mbb{F}}\prs{V,W}$
+ויהיו
+$\mcal{B} = \prs{v_1, \ldots, v_n}$
+בסיס של
+$V$
+ו־%
+$\mcal{C}$
+בסיס של
+$W$.
+אז
+\[\brs{T}^\mcal{B}_\mcal{C} \brs{v}_\mcal{B} = \brs{T\prs{v}}_\mcal{C}\]
+לכל
+$v \in V$.
+\end{proposition}
+
+\begin{notation}
+אם
+$\mcal{B}$
+בסיס של מרחב וקטורי סוף־מימדי
+$V$
+ואם
+$T \in \End\prs{V}$,
+נסמן
+$\brs{T}_\mcal{B} \coloneqq \brs{T}^\mcal{B}_\mcal{B}$
+ונקרא למטריצה זאת
+\emph{המטריצה המייצגת של
+$T$
+לפי הבסיס
+$\mcal{B}$}.
+\end{notation}
+
+\begin{notation}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי עם בסיסים
+$\mcal{B},\mcal{C}$.
+נסמן
+$M^\mcal{B}_\mcal{C} \coloneqq \brs{\id_V}^\mcal{B}_\mcal{C}$.
+\end{notation}
+
+\begin{notation}
+אם
+$A \in \Mat_{n\times n}\prs{\mbb{F}}$,
+נסמן
+\begin{align*}
+T_A \colon \mbb{F}^n &\to \mbb{F}^n \\
+\text{.} \hphantom{lalala} v &\mapsto Av
+\end{align*}
+\end{notation}
+
+\section{תרגילים}
+
+\begin{exercisechap}
+תהי
+$A \in \Mat_n\prs{\FF}$
+ויהי
+$\mcal{E} = \prs{e_1, \ldots, e_n}$
+הבסיס הסטנדרטי של
+$\FF^n$.
+הראו כי
+$\brs{T_A}_{\mcal{E}} = A$.
+\end{exercisechap}
+
+\begin{solution}
+לפי הגדרת מטריצה מייצגת, העמודה ה־%
+$i$
+של
+$\brs{T_A}_{\mcal{E}}$
+היא
+$T_A \prs{e_i} = A e_i$.
+לפי הגדרת כפל מטריצות, וכפי שראינו באלגברה א', זאת בדיוק העמודה ה־%
+$i$
+של
+$A$.
+\end{solution}
+
+\begin{exercisechap}\label{ex:p(x+1)}
+יהי
+$V = \mbb{R}_3\brs{x}$
+מרחב הפולינום הממשיים ממעלה לכל היותר
+$3$,
+תהי
+\begin{align*}
+T \colon \mbb{R}_3\brs{x} &\to \mbb{R}_3\brs{x} \\
+p\prs{x} &\mapsto p\prs{x+1}
+\end{align*}
+ויהי
+$\mcal{B} = \prs{1,x,x^2,x^3}$
+בסיס של
+$V$.
+כיתבו את
+$\brs{T}_\mcal{B}$.
+\end{exercisechap}
+
+\begin{solution}
+לפי הגדרת המטריצה המייצגת,
+עמודות
+$\brs{T}_\mcal{B}$
+הן
+$\brs{T\prs{x^i}}_B$
+עבור
+$i \in \set{0,1,2,3}$.
+מתקיים
+\begin{align*}
+T\prs{1} &= 1 \\
+T\prs{x} &= x+1 = 1 + x \\
+T\prs{x^2} &= \prs{x+1}^2 = 1 + 2x + x^2 \\
+T\prs{x^3} &= \prs{x+1}^3 = 1 + 3x + 3x^2 + x^3
+\end{align*}
+ולכן
+\begin{align*}
+\brs{T\prs{1}}_\mcal{B} &= e_1 \\
+\brs{T\prs{x}}_\mcal{B} &= e_1 + e_2 \\
+\brs{T\prs{x^2}}_\mcal{B} &= e_1 + 2 e_2 + e_3 \\
+\brs{T\prs{x^3}}_\mcal{B} &= e_1 + 3 e_2 + 3 e_3 + e_4
+\end{align*}
+ואז
+\begin{align*}
+\text{.} \brs{T}_\mcal{B} &= \pmat{1 & 1 & 1 & 1 \\ 0 & 1 & 2 & 3 \\ 0 & 0 & 1 & 3 \\ 0 & 0 & 0 & 1}
+\end{align*}
+\end{solution}
+
+\begin{exercisechap}
+תהיינה
+$A,B \in \Mat_{m \times n}\prs{\mbb{F}}$
+ונניח כי לכל
+$v \in \mbb{F}^n$
+מתקיים
+$Av = Bv$.
+אז
+$A = B$.
+\end{exercisechap}
+
+\begin{solution}
+מהנתון, מתקיים
+$\prs{A - B}v = 0$
+לכל
+$v \in \mbb{F}^n$.
+בפרט העמודה ה־%
+$i$
+של
+$A-B$,
+שהינה
+$\prs{A - B}e_i$,
+שווה ל־%
+$0$.
+לכן
+$A - B = 0$.
+\end{solution}
+
+\begin{proposition}
+יהיו
+$U,V,W$
+מרחבים וקטוריים סוף־מימדיים מעל אותו שדה
+$\mbb{F}$
+עם בסיסים
+$\mcal{B},\mcal{C},\mcal{D}$
+בהתאמה,
+ותהיינה
+\begin{align*}
+S \in \Hom_{\mbb{F}}\prs{U,V} \\
+\text{.} T \in \Hom_{\mbb{F}}\prs{V,W}
+\end{align*}
+אז
+\[\text{.} \brs{T \circ S}^\mcal{B}_\mcal{D} = \brs{T}^\mcal{C}_\mcal{D} \brs{S}^\mcal{B}_\mcal{C}\]
+\end{proposition}
+
+\chapter{ערכים עצמיים}
+
+\section{הגדרות ותכונות בסיסיות}
+
+כדי לחשב פעולה של אופרטור
+$T \in \End_\FF\prs{V}$
+על וקטור
+$v$,
+נרצה לכתוב
+\[v = \sum_{i \in [k]} u_i\]
+עבור וקטורים
+$u_i$
+שקל לחשב עבורם את
+$T\prs{u_i}$,
+כפי שעשינו עבור שיקוף דרך הישר
+$x=y$.
+הפעולה הכי פשוטה של אופרטור על וקטור היא כפל של הוקטור בסקלר.
+אם קיימות
+$\lambda_i \in \FF$
+עבורן
+$T\prs{u_i} = \lambda_i u_i$,
+נקבל כי
+\begin{align*}
+\text{.} T\prs{v} = T\prs{\sum_{i \in [k]} u_i} = \sum_{i \in [k]} T\prs{u_i} = \sum_{i \in [k]} \lambda_i u_i 
+\end{align*}
+זה מוביל אותנו להגדרה הבאה.
+
+\begin{definition}[ערכים ווקטורים עצמיים]
+יהי
+$T \in \End_\FF\prs{V}$
+ויהי
+$\lambda \in \FF$.
+נגיד כי
+$\lambda$
+הינו
+\emph{ערך עצמי של
+$T$}
+אם קיים
+$v \in V \setminus \set{0}$
+עבורו
+$T\prs{v} = \lambda v$.
+נקרא לוקטור
+$v$
+כזה
+\emph{וקטור עצמי של
+$T$
+עבור הערך העצמי
+$\lambda$}.
+\end{definition}
+
+\begin{exercisechap}
+נגדיר את
+\emph{סדרת פיבונצ'י}
+על ידי
+\begin{align*}
+F_0 &= 0 \\
+F_1 &= 1 \\
+\text{.} \forall n > 1: F_n &= F_{n-1} + F_{n-2} 
+\end{align*}
+
+\begin{enumerate}
+\item מיצאו
+$m \in \NN$,
+וקטור
+$v_0 \in \CC^m$
+ואופרטור
+$T \in \End_\CC\prs{\CC^m}$
+כך שהמקדם הראשון של
+$T^n v_0$
+הוא
+$F_n$,
+לכל
+$n \in \NN$.
+
+\item מיצאו את הערכים העצמיים של
+$T$,
+ולכל אחד מהם מיצאו וקטור עצמי.
+
+\item מיצאו נוסחה סגורה עבור
+$F_n$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item בנוסחה
+$F_n = F_{n-1} + F_{n-2}$
+מופיעים שני ביטויים באגף ימין, ולכן ננסה להסתכל על וקטורים במרחב דו־מימדי.
+צריך להתקיים
+$v_0 = \pmat{F_0 \\ *}$
+עבור מקדם שני כלשהו, וכדי שיהיה ניתן לחשב את שאר המקדמים ניקח את המקדם השני להיות
+$F_1$.
+אז
+$V_0 = \pmat{F_0 \\ F_1} = \pmat{0 \\ 1}$.
+
+נרצה
+$T$
+כך שיתקיים
+\[\text{.} T\prs{v_0} = \pmat{F_1 \\ F_2}\]
+לשם כך נגדיר
+\[\text{.} T\pmat{x \\ y} = \pmat{y \\ x + y}\]
+אז לפי הגדרת סדרת פיבונצ'י נקבל את הנדרש.
+
+\item נחפש וקטורים וערכים עצמיים. נניח כי
+$\alpha \in \CC \setminus \set{0}$
+ערך עצמי עם וקטור עצמי
+$v = \pmat{x \\ y}$.
+אז
+\[\alpha \pmat{x \\ y} = \pmat{y \\ x + y}\]
+ולכן
+\begin{align*}
+\alpha x &= y \\
+\text{.} \alpha y &= x + y
+\end{align*}
+נציב את המשוואה הראשונה בשנייה ונקבל
+\begin{align*}
+\alpha^2 x = \prs{1 + \alpha} x
+\end{align*}
+ולכן
+$\alpha^2 - \alpha - 1 = 0$.
+נקבל מנוסחאת השורשים כי
+\[\text{.} \alpha = \frac{1 \pm \sqrt{1 + 4}}{2} = \frac{1 \pm \sqrt{5}}{2}\]
+נסמן את השורשים בתור
+\begin{align*}
+\phi &= \frac{1 + \sqrt{5}}{2} \\
+\psi &= \frac{1 - \sqrt{5}}{2}
+\end{align*}
+כאשר $\phi$ נקרא
+\emph{יחס הזהב}.
+
+אז מהשוויון
+$\alpha x = y$
+נקבל את הוקטורים העצמיים
+$v_\phi = \pmat{1 \\ \phi},
+v_\psi = \pmat{1 \\ \psi}$
+עבור
+$\phi, \psi$
+בהתאמה.
+
+\item
+נכתוב את
+$v_0$
+בעזרת הוקטורים העצמיים שמצאנו.
+מתקיים
+$\phi + \psi = 1$
+וגם
+$\phi - \psi = \sqrt{5}$.
+לכן
+\begin{align*}
+\text{.} v_0 = \pmat{0 \\ 1} = \frac{1}{\sqrt{5}} \prs{v_\phi - v_\psi}
+\end{align*}
+אז
+\begin{align*}
+\pmat{F_n \\ F_{n+1}} = T^n\prs{v_0} = \frac{1}{\sqrt{5}} \prs{T^n\prs{v_\phi} - T^n\prs{v_\psi}} = \frac{1}{\sqrt{5}} \prs{\pmat{\phi^{n} \\ \phi^{n+1}} - \pmat{\psi^n \\ \psi^{n+1}}}
+\end{align*}
+ולכן
+\begin{align*}
+\text{.} F_n = \frac{1}{\sqrt{5}} \cdot \prs{\phi^n - \psi^n} = \frac{\phi^n - \psi^n}{\sqrt{5}}
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+בתרגיל זה היה בסיס של וקטורים עצמיים, ולכן יכולנו לתאר את
+$v_0$
+כצירוף לינארי של אלו ולחשב בעזרת זאת את
+$T^n\prs{v_0}$.
+אם נסמן
+$\mcal{B} = \prs{v_\phi, v_\psi}$
+נקבל כי
+\begin{align*}
+\brs{T}_{\mcal{B}} &= \pmat{\vert & \vert \\ \brs{T\prs{v_\phi}}_{\mcal{B}} & \brs{T\prs{v_\psi}}_{\mcal{B}} \\
+\vert & \vert}
+\\&=
+\pmat{\vert & \vert \\ \brs{\phi v_\phi}_{\mcal{B}} & \brs{\psi v_\psi}_{\mcal{B}} \\
+\vert & \vert}
+\\ \text{.} \hphantom{\brs{T}_{\mcal{B}}} &=
+\pmat{\phi & 0 \\ 0 & \psi}
+\end{align*}
+
+באופן כללי יותר, המקדמים מחוץ לאלכסון של מטריצה מייצגת לפי בסיס של וקטורים עצמיים שווים כולם לאפס.
+
+\begin{definition}
+אופרטור
+$T \in \End_\FF\prs{V}$
+נקרא
+\emph{לכסין}
+אם קיים בסיס
+$\mcal{B}$
+של
+$V$
+עבורו
+$\brs{T}_{\mcal{B}}$
+מטריצה אלכסונית, או באופן שקול בסיס של וקטורים עצמיים של
+$T$.
+\end{definition}
+
+באופן כללי, נוח להיעזר במטריצות מייצגות כדי למצוא וקטורים וערכים עצמיים. נרצה להתאים מספר למטריצה שעוזר לנו לתאר את הערכים העצמיים שלה. כיוון שמספר אחד לא יתן לנו אוסף של ערכים עצמיים, נרצה להתאים גם פולינום הקשור למספר זה באופן כזה שהשורשים שלו יהיו הערכים העצמיים.
+
+נקרא למספר זה
+\emph{הדטרמיננטה}
+ונרצה שעבור מטריצה אלכסונית
+$D = \diag\prs{\lambda_1, \ldots, \lambda_n}$
+יתקיים
+\[ \text{.} \det\prs{x I_n - D} = \prod_{i \in [n]} \prs{x - \lambda_i}\]
+נקבל מכך כי הדטרמיננטה של מטריצה אלכסונית היא מכפלת איברי האלכסון.
+ נשים לב כי אז כאשר מקדמי האלכסון חיוביים, מכפלתם היא השטח של תיבה שצלעותיה הן וקטורי העמודות של המטריצה. ראו איור
+ \ref{fig:det_parallelograms}.
+
+נוסיף שתי דרישות כדי לקבל הגדרה עבור הדטרמיננטה.
+\begin{enumerate}
+\item כדי שיהיה נוח להיעזר בדטרמיננטה עבור אלגברה לינארית, נדרוש שהיא תהיה לינארית בכל עמודה.
+כלומר,
+\[
+\begin{aligned}
+&\det\begin{pmatrix}
+\vert & & \vert & \vert & \vert & & \vert \\
+v_1 & \cdots & v_{i-1} & \alpha u+w & v_{i+1} & \cdots & v_n \\
+\vert & & \vert & \vert & \vert & & \vert
+\end{pmatrix}
+\\[1em]
+&\quad=
+\alpha\det\begin{pmatrix}
+\vert & & \vert & \vert & \vert & & \vert \\
+v_1 & \cdots & v_{i-1} & u & v_{i+1} & \cdots & v_n \\
+\vert & & \vert & \vert & \vert & & \vert
+\end{pmatrix}
+\\[1em]
+&\qquad+
+\det\begin{pmatrix}
+\vert & & \vert & \vert & \vert & & \vert \\
+v_1 & \cdots & v_{i-1} & w & v_{i+1} & \cdots & v_n \\
+\vert & & \vert & \vert & \vert & & \vert
+\end{pmatrix}.
+\end{aligned}
+\]
+לכל
+$v_i, u, w \in \FF^n$
+ולכל
+$\alpha \in \FF$.
+זה מסתדר עם שטח המקבילון, עד כדי שהסימן של הדטרמיננטה לעתים יהיה שלילי; ראו איור
+\ref{subfig:det_linearity_parallelogram}.
+
+\item
+כאשר שתי צלעות של התיבה שוות זאת לזאת, כמתואר באיור
+\ref{subfig:det_degenerate_parallelogram},
+מתקבלת מקבילית מנוונת ולכן נדרוש שהדטרמיננטה תהיה שווה לאפס.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/parallelogram_v1_v2.png}
+        \caption{הדטרמיננטה עבור המטריצה
+        $\pmat{2 & 0 \\ 0 & 1}$
+        שווה
+        $2$.}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/parallelogram_v1_v2_plus_half_v1.png}
+        \caption{
+			הדטרמיננטה של המטריצה המתקבלת לאחר הוספת כפולה של העמודה הראשונה לשנייה שווה לדטרמיננטה המקורית. למקבילית החדשה אותו אורך בסיס ואותו גובה.        
+        }
+        \label{subfig:det_linearity_parallelogram}
+    \end{subfigure}
+
+    \medskip
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/parallelogram_v1_v1.png}
+        \caption{אם במקום העמודה השנייה נכתוב שוב את העמודה הראשונה, נקבל מקבילית מנוונת עם שטח 0, והדטרמיננטה של המטריצה שווה גם היא 0.}
+        \label{subfig:det_degenerate_parallelogram}
+    \end{subfigure}
+    \caption{הדטרמיננטה של מטריצות כשטח מקביליות שצלעותיהן הן עמודות המטריצות.}
+    \label{fig:det_parallelograms}
+\end{figure}
+
+דרישות אלו מגדירות ביחידות את הדטרמיננטה. נדון בכך בהמשך הקורס, והגדרת הדטרמיננטה תהיה יותר אינטואיטיבית אז.
+
+\begin{definition}[דטרמיננטה]
+תהי
+$A \in \Mat_{n \times n}\prs{\mbb{F}}$
+מטריצה עם מקדמים בשדה
+$\mbb{F}$.
+נגדיר את
+\emph{הדטרמיננטה}
+$\det\prs{A}$
+של
+$A$
+באופן הרקורסיבי הבא.
+
+תהי
+$A_{\prs{i,j}}$
+המטריצה המתקבלת מ־%
+$A$
+על ידי הסרת השורה ה־%
+$i$
+והעמודה ה־%
+$j$.
+המספר
+$\det\prs{A_{\prs{i,j}}}$
+נקרא
+\emph{המינור}
+ה־$\prs{i,j}$ של
+$A$
+והדטרמיננטה של
+$A$
+שווה
+\begin{align*}
+\det\prs{A} &= \sum_{i \in \brs{n}} \prs{-1}^{i+j} a_{i,j} \det\prs{A_{\prs{i,j}}}
+\end{align*}
+עבור כל
+$j \in \brs{n}$
+קבוע, ושווה
+\begin{align*}
+\det\prs{A} &= \sum_{j \in \brs{n}} \prs{-1}^{i+j} a_{i,j} \det\prs{A_{\prs{i,j}}}
+\end{align*}
+עבור כל
+$i \in \brs{n}$
+קבוע.
+\end{definition}
+
+\begin{theorem}
+תהיינה
+$A, B, C \in \Mat_{n \times n}\prs{\mbb{F}}$
+ונניח כי
+$C$
+הפיכה.
+מתקיימות התכונות הבאות.
+\begin{enumerate}
+\item $\det\prs{AB} = \det\prs{A} \cdot \det\prs{B}$
+\item $\det\prs{C^{-1}} = \prs{\det\prs{C}}^{-1}$
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+\begin{enumerate}
+\item החלפת שתי שורות או עמודות במטריצה כופלת את הדטרמיננטה ב־%
+$\prs{-1}$.
+\item כפל שורה או עמודה במטריצה בסקלר
+$\alpha$
+כופל את הדטרמיננטה ב־%
+$\alpha$.
+\item הוספת כפולה שורה או עמודה לשורה או עמודה במטריצה אינה משנה את הדטרמיננטה.
+\end{enumerate}
+\end{theorem}
+
+\section{תרגילים על הדטרמיננטה}
+
+\begin{exercisechap}
+חשבו את הדטרמיננטות של המטריצות הבאות.
+
+\begin{enumerate}
+\item \[\pmat{1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9} \in \Mat_{3}\prs{\mbb{R}}\]
+\item \[\pmat{0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0} \in \Mat_{4}\prs{\mbb{R}}\]
+\item \[\pmat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 1 & 1} \in \Mat_{3}\prs{\mbb{R}}\]
+\item \[\pmat{1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 1 & 1} \in \Mat_{3}\prs{\mbb{R}}\]
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+נחשב לפי השורה הראשונה.
+\begin{align*}
+\det \pmat{1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9} &= 1 \cdot \det\pmat{5 & 6 \\ 8 & 9} - 2 \cdot \det \pmat{4 & 6 \\ 7 & 9} + 3 \cdot \det \pmat{4 & 5 \\ 7 & 8}
+\\&=
+1 \cdot \prs{5 \cdot 9 - 6 \cdot 8} - 2 \cdot \prs{4 \cdot 9 - 6 \cdot 7} + 3 \cdot \prs{4 \cdot 8 - 5 \cdot 7}
+\\&=
+1 \cdot \prs{-3} -2 \cdot \prs{-6} + 3 \cdot \prs{-3}
+\\&=
+-3 + 12 - 9
+\\&= 0
+\end{align*}
+\item החלפת שורות כופלת את הדטרמיננטה ב־%
+$\prs{-1}$.
+כיוון שניתן לקבל את המטריצה ממטריצת היחידה על ידי החלפת השורות
+$1,4$
+והשורות
+$2,3$,
+נקבל כי הדטרמיננטה שווה לזאת של היחידה. לכן
+\[\text{.} \det \pmat{0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0} = 1\]
+\item
+הוספת כפולה של השורות הראשונה והשנייה ב־%
+$\prs{-1}$
+לשורה השלישית לא משנה את הדרמיננטה. לכן הדטמיננטה של המטריצה שווה לזאת של היחידה, ולכן
+\[\text{.} \det \pmat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 1 & 1} = 1\]
+\item
+הוספת כפולה של השורות הראשונה והשנייה ב־%
+$\prs{-1}$
+לשורה השלישית לא משנה את הדרמיננטה. לכן הדטמיננטה של המטריצה שווה לזאת של
+\begin{align*}
+\text{.} \pmat{1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 0}
+\end{align*}
+כיוון שהשורה השלישית היא שורת אפסים, אם נפתח את הדטרמיננטה לפיה נקבל שהדטרמיננטה שווה
+$0$.
+זה נכון באופן כללי יותר אם השורות תלויות לינארית, כי נוכל לקבל שורת אפסים מצירוף לינארי של השורות.
+\end{enumerate}
+\end{solution}
+
+\begin{exercisechap}
+תהי
+$T \in \End_{\mbb{F}}\prs{V}$
+העתקה לינארית ויהי
+$\mcal{B}$
+בסיס של
+$V$.
+הראו כי ניתן להגדיר
+$\det\prs{T} = \det\prs{\brs{T}_\mcal{B}}$.
+כלומר, הראו שאם
+$\mcal{C}$
+בסיס נוסף של
+$V$
+מתקיים
+$\det\prs{\brs{T}_\mcal{B}} = \det\prs{\brs{T}_\mcal{C}}$.
+\end{exercisechap}
+
+\begin{solution}
+מתקיים
+\begin{align*}
+\brs{T}_\mcal{B} = \prs{M^\mcal{B}_\mcal{C}}^{-1} \brs{T}_\mcal{C} M^\mcal{B}_\mcal{C}
+\end{align*}
+ולכן
+\begin{align*}
+\text{.} \det\prs{\brs{T}_\mcal{B}} &= \det\prs{\prs{M^\mcal{B}_\mcal{C}}^{-1}} \det\prs{\brs{T}_\mcal{C}} \det\prs{M^\mcal{B}_\mcal{C}}
+\end{align*}
+כיוון ש־%
+$\det\prs{A^{-1}} = \frac{1}{\det\prs{A}}$
+ לכל מטריצה
+ $A$,
+ מתקיים
+ $\det\prs{\prs{M^\mcal{B}_\mcal{C}}^{-1}} = \frac{1}{\det\prs{M^\mcal{B}_\mcal{C}}}$.
+ לכן, נקבל בסה"כ כי
+ \[\text{,} \det\prs{\brs{T}_\mcal{B}} = \det\prs{\brs{T}_\mcal{C}}\]
+ כנדרש.
+\end{solution}
+
+\section{הפולינום האופייני}
+
+כעת נוכל גם להגדיר את הפולינום האופייני, ששורשיו יהיו הערכים העצמיים, באופן כזה שהפולינום האופייני של מטריצה
+$\diag\prs{\lambda_1, \ldots, \lambda_n}$
+יהיה
+$\prod_{i \in [n]} \prs{x - \lambda_i}$.
+
+\begin{definition}[פולינום אופייני]
+תהי
+$A \in \Mat_n\prs{\FF}$.
+נגדיר את
+\emph{הפולינום האופייני של
+$A$}
+בתור
+\begin{align*}
+\text{.} p_A\prs{x} = \det\prs{x I - A}
+\end{align*}
+
+נגדיר את
+\emph{הפולינום האופייני}
+של
+$T \in \End_\FF\prs{V}$
+בתור
+$p_T\prs{x} = p_{\brs{T}_{\mcal{B}}}\prs{x}$
+עבור
+$\mcal{B}$
+בסיס של
+$V$.
+\end{definition}
+
+\begin{remark}
+יתכן שבמהלך הקורס לא נציין כל הגדרה או טענה גם עבור אופרטורים וגם עבור מטריצות. הרבה מהטענות ניתן לתרגם בין אופרטורים ומטריצות באופן מיידי, וכאשר לא נציין את התרגום במפורש כדאי לנסות לחשוב עליו לבד.
+\end{remark}
+
+\begin{remark}
+עבור
+$T \in \End_\FF\prs{V}$
+מתקיים
+\[\text{.} p_T\prs{x} = \det\prs{x \id_V - T}\]
+\end{remark}
+
+\begin{proposition}
+הערכים העצמיים של
+$T \in \End_\FF\prs{V}$
+הם שורשי הפולינום האופייני
+$p_T\prs{x}$.
+\end{proposition}
+
+\begin{definition}[ריבוי אלגברי]
+יהי
+$T \in \End_\FF\prs{V}$
+ויהי
+$\lambda \in \FF$.
+\emph{הריבוי האלגברי של
+$\lambda$ ביחס ל־%
+$T$}
+הוא הריבוי של
+$\lambda$
+כשורש של
+$p_T\prs{x}$.
+
+נסמנו
+$r_a^T\prs{\lambda}$,
+או כאשר האופרטור ברור מההקשר, לעתים
+$r_a\prs{\lambda}$.
+\end{definition}
+
+נוכל לחשב את מספר הפעמים שמופיע
+$\lambda \in \FF$
+על האלכסון של
+המטריצה
+$D \coloneqq \diag\prs{\lambda_1, \ldots, \lambda_n}$
+באופן נוסף, בתור
+$\dim \ker\prs{\lambda I - D}$,
+כיוון שהמטריצה
+$\lambda I - D$
+היא מטריצה אלכסונית עם מספר אפסים על האלכסון השווה למספר הפעמים שמופיע
+$\lambda$
+על האלכסון של
+$D$.
+
+באופן כללי, הגרעין
+$\ker\prs{\lambda \id_V - T}$
+הוא אוסף כל הוקטורים העצמיים עם הערך העצמי
+$\lambda$,
+יחד עם וקטור האפס.
+
+\begin{definition}[מרחב עצמי]
+יהי
+$T \in \End_\FF\prs{V}$
+ויהי
+$\lambda \in \FF$.
+נסמן
+\[V_\lambda^T \coloneqq \ker\prs{\lambda \id_V - T}\]
+ונקרא לו
+\emph{המרחב העצמי של
+$T$
+המתאים לערך העצמי
+$\lambda$}.
+
+כאשר האופרטור ברור מההקשר, נסמן לעתים
+$V_\lambda$
+עבור מרחב זה.
+\end{definition}
+
+\begin{definition}[ריבוי גיאומטרי]
+יהי
+$T \in \End_\FF\prs{V}$
+ויהי
+$\lambda \in \FF$.
+
+\emph{הריבוי הגיאומטרי של
+$\lambda$
+כערך עצמי של
+$T$}
+הוא
+\begin{align*}
+\text{.} r^T_g\prs{\lambda} \coloneqq \dim V^T_{\lambda}
+\end{align*}
+כאשר האופרטור ברור מההקשר נסמן לעתים
+$r_g\prs{\lambda}$
+במקום זאת.
+\end{definition}
+
+\begin{proposition}
+יהי
+$T \in \End_\FF\prs{V}$
+ויהי
+$\lambda \in \FF$.
+אז
+\[\text{.} r_g^T\prs{\lambda} \leq r_a^T\prs{\lambda}\]
+\end{proposition}
+
+\begin{proposition} \label{proposition:diag-equivalence}
+יהי
+$T \in \End_\FF\prs{V}$.
+התנאים הבאים שקולים.
+
+\begin{enumerate}[label = (\alph*)]
+\item $T$ לכסין.
+\item הפולינום
+$p_T\prs{x}$
+מתפצל כמכפלה של גורמים לינאריים, ולכל ערך עצמי
+$\lambda \in \FF$
+מתקיים
+$r_a\prs{\lambda} = r_g\prs{\lambda}$.
+\item אם הערכים העצמיים השונים של
+$T$
+הם
+$\lambda_1, \ldots, \lambda_k$
+ואם
+$\mcal{B}_1, \ldots, \mcal{B}_k$
+בסיסים של
+$V_{\lambda_1}, \ldots, V_{\lambda_k}$
+בהתאמה, אז
+\[\mcal{B} \coloneqq \bigcup_{i \in [k]} \mcal{B}_i\]
+הוא בסיס של
+$V$.
+\end{enumerate}
+\end{proposition}
+
+\section{תרגילים על הפולינום האופייני}
+
+\begin{exercisechap}
+הוכיחו כי המטריצה
+\[A = \pmat{a & b \\ 0 & c} \in \Mat_2\prs{\RR}\]
+הינה לכסינה אם ורק אם
+$b = 0$
+או
+$a \neq c$.
+\end{exercisechap}
+
+\begin{solution}
+ניזכר ראשית שהערכים העצמיים של מטריצה משולשת עליונה הינם איברי האלכסון, וכי הריבוי האלגברי של כל ערך עצמי הוא מספר הפעמים שהוא מופיע על האלכסון. לכן הערכים העצמיים של
+$A$
+הם
+$a,c$
+כאשר אם
+$a = c$,
+זהו ערך עצמי מריבוי אלגברי
+$2$
+ואחרת כל אחד מריבוי אלגברי
+$1$.
+
+נניח כעת כי
+$A$
+לכסינה וכי
+$a=c$,
+ונראה כי
+$b \neq 0$.
+
+$a$
+ערך עצמי מריבוי אלגברי
+$2$.
+הריבוי האלגברי של ערך עצמי במטריצה לכסינה הוא מספר הפעמים שהוא מופיע על האלכסון במטריצה אלכסונית הדומה לה, ולכן
+$A$
+דומה ל־%
+$a I$.
+אבל, המטריצה היחידה הדומה ל־%
+$a I$
+היא עצמה, כיוון שלכל
+$P \in \Mat_2\prs{\RR}$
+הפיכה מתקיים
+\[\text{.} P^{-1} a I P = a P^{-1} I P = a P^{-1} P = a I\]
+לכן
+$A = aI$
+ולכן
+$b = 0$.
+
+נניח בכיוון השני כי
+$a \neq c$
+או
+$b = 0$,
+ונוכיח כי
+$A$
+לכסינה.
+
+אם
+$b = 0$,
+המטריצה
+$A$
+אלכסונית בעצמה, ואין מה להראות. נניח אם כן כי
+$a \neq c$.
+אז
+\begin{align*}
+p_A\prs{x} &= \det\pmat{x - a & -b \\ 0 & x - c}
+\\&= \prs{x-a}\prs{x-c}
+\end{align*}
+מתפצל לגורמים לינאריים ובנוסף
+\begin{align*}
+1 \leq r_g\prs{a} \leq r_a\prs{a} = 1 \\
+1 \leq r_g\prs{c} \leq r_a\prs{c} = 1
+\end{align*}
+ולכן
+$r_g\prs{a} = r_a\prs{a} = 1$
+וכן
+$r_g\prs{c} = r_a\prs{c} = 1$.
+לכן מטענה
+\ref{proposition:diag-equivalence}
+המטריצה
+$A$
+לכסינה.
+\end{solution}
+
+\begin{exercisechap}
+נסתכל על מטריצת הסיבוב הבאה, התלויה בפרמטר
+$\theta \in \RR$.
+
+\begin{align*}
+\text{.} \rho_\theta \coloneqq \pmat{\cos\prs{\theta} & -\sin\prs{\theta} \\ \sin\prs{\theta} & \cos\prs{\theta}} \in \Mat_2\prs{\RR}
+\end{align*}
+
+\begin{enumerate}
+\item קיבעו עבור אילו ערכי
+$\theta$
+המטריצה
+$\rho_\theta$
+לכסינה. עבור הערכים שעבורם היא לכסינה, מיצאו מטריצה
+$2 \times 2$
+הפיכה
+$P$
+ומטריצה אלכסונית
+$D$
+עבורן
+\[\text{.} P^{-1} \rho_\theta P = D\]
+
+\item איך תשתנה תשובתכן לסעיף הקודם אם נסתכל על
+$\rho_\theta$
+כעל מטריצה ב־%
+$\Mat_2\prs{\CC}$?
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+נחשב ערכים עצמיים, שהם שורשי הפולינום האופייני.
+\begin{align*}
+p_{\rho_\theta}\prs{x} &= \det\prs{xI - \rho_\theta}
+\\&= \det\pmat{x - \cos\prs{\theta} & \sin\prs{\theta} \\
+- \sin\prs{\theta} & x - \cos\prs{\theta}}
+\\&=
+\prs{x-\cos\prs{\theta}}^2 + \sin\prs{\theta}^2
+\\&= x^2 - 2 \cos\prs{\theta} x + \cos\prs{\theta}^2 \sin\prs{\theta}^2
+\\&= x^2 - 2 \cos\prs{\theta} x + 1
+\end{align*}
+שורשי הפולינום, לפי נוסחת השורשים של פולינום ריבועי, הם
+\begin{align*}
+x_{1,2} &\coloneqq \frac{2 \cos\prs{\theta} \pm \sqrt{\prs{2\cos\prs{\theta}}^2 - 4}}{2}
+\\&=
+\frac{2 \cos\prs{\theta} \pm 2 \sqrt{\cos\prs{\theta}^2 - 1}}{2}
+\\&=
+\cos\prs{\theta} \pm \sqrt{- \sin\prs{\theta}^2}
+\\&=
+\cos\prs{\theta} \pm i \sin\prs{\theta}
+\end{align*}
+ונסמן
+\begin{align*}
+x_1 &= \cos\prs{\theta} + i \sin\prs{\theta} \\
+\text{.} x_2 &= \cos\prs{\theta} - i \sin\prs{\theta}
+\end{align*}
+
+אם
+$\sin\prs{\theta} \neq 0$
+נקבל כי אין ערכים עצמיים ממשיים. לכן אין שורשים ממשיים לפולינום
+$p_{\rho_\theta}$,
+לכן הוא אינו מתפצל כמכפלה של גורמים לינאריים, ולכן לפי טענה
+\ref{proposition:diag-equivalence}
+המטריצה
+$\rho_\theta$
+אינה לכסינה.
+
+אחרת,
+$\sin\prs{\theta} = 0$
+ואז
+\begin{align*}
+\rho_\theta = \pmat{\cos\prs{\theta} & 0 \\ 0 & \cos\prs{\theta}}
+\end{align*}
+והמטריצה לכסינה כמטריצה אלכסונית. נבחר למשל
+$P = I$
+ונקבל כי
+\[D \coloneqq P^{-1} \rho_\theta P = \rho_\theta = \pmat{\cos\prs{\theta} & 0 \\ 0 & \cos\prs{\theta}}\]
+אלכסונית.
+
+\item כאשר
+$\sin\prs{\theta} = 0$,
+המטריצה
+$\rho_\theta$
+עדיין לכסינה באותו אופן.
+
+כאשר
+$\sin\prs{\theta} \neq 0$,
+נקבל הפעם שני ערכים עצמיים
+$\cos\prs{\theta} \pm i \sin\prs{\theta}$
+שונים, כל אחד מריבוי אלגברי
+$1$.
+כיוון שהריבוי הגיאומטרי של ערך עצמי שווה לפחות
+$1$
+ואינו גדול מהריבוי האלגברי, נקבל כי הריבויים הגיאומטריים של הערכים העצמיים גם הם שווים
+$1$.
+נמצא וקטורים עצמיים.
+
+\begin{itemize}
+\item עבור הערך העצמי
+$x_1 = \cos\prs{\theta} + i \sin\prs{\theta}$,
+הוקטורים העצמיים הם הוקטורים בגרעין של
+\[\text{.} x_1 I - \rho_\theta = \pmat{x_1 - \cos\prs{\theta} & \sin\prs{\theta} \\ -\sin\prs{\theta} & x_1 - \cos\prs{\theta}} = \pmat{i \sin\prs{\theta} & \sin\prs{\theta} \\ -\sin\prs{\theta} & i \sin\prs{\theta}}\]
+זאת מטריצה שהעמודה הראשונה שלה שווה לעמודה השנייה כפול
+$i$,
+ולכן דרגתה
+$1$,
+והוקטור
+$\pmat{1 \\ -i}$
+הינו וקטור עצמי שלה עם ערך עצמי
+$0$,
+ולכן וקטור עצמי של
+$\rho_\theta$
+עם ערך עצמי
+$x_1$.
+הראנו כי הריבוי הגיאומטרי שווה
+$1$,
+ולכן וקטור עצמי זה פורש את כל המרחב העצמי (שהינו ממימד $1$)
+ונקבל כי
+\begin{align*}
+\text{.} V^{\rho_\theta}_{x_1} = \Span\prs{\pmat{1 \\ -i}}
+\end{align*}
+
+\item עבור הערך העצמי
+$x_2 = \cos\prs{\theta} - i \sin\prs{\theta}$,
+הוקטורים העצמיים הם הוקטורים בגרעין של
+\begin{align*}
+\text{.} x_2 I - \rho_\theta = \pmat{-i\sin\prs{\theta} & \sin\prs{\theta} \\ -\sin\prs{\theta} & -i \sin\prs{\theta}}
+\end{align*}
+זאת מטריצה שהעמודה הראשונה שללה שווה לעמודה השנייה כפול
+$-i$
+ולכן דרגתה
+$1$
+והוקטור
+$\pmat{1 \\ i}$
+הוא וקטור עצמי שלה עם ערך עצמי
+$0$
+ובאותו אופן כמו עם הערך העצמי הקודם,
+\[\text{.} V_{x_2}^{\rho_\theta} = \Span\prs{\pmat{1 \\ i}}\]
+\end{itemize}
+נקבל בסך הכל כי
+$\mcal{B} \coloneqq \prs{\pmat{1 \\ -i}, \pmat{i \\ i}}$
+בסיס של
+$V$
+המורכב מוקטורים עצמיים של
+$\rho_\theta$.
+אז
+\[D \coloneqq \brs{T_{\rho_\theta}}_{\mcal{B}} = \diag\prs{x_1, x_2}\]
+ומתקיים
+\begin{align*}
+D = \prs{M^{\mcal{B}}_{\mcal{E}}}^{-1} \brs{T_{\rho_\theta}}_{\mcal{E}} M^{\mcal{B}}_{\mcal{E}}
+\end{align*}
+לפי נוסחת מעבר בסיס. לכן אם נסמן
+\begin{align*}
+P \coloneqq M^{\mcal{B}}_{\mcal{E}} = \pmat{1 & 1 \\ -i & i}
+\end{align*}
+נקבל כי
+\begin{align*}
+D = P^{-1} \rho_B P
+\end{align*}
+מטריצה אלכסונית.
+\end{enumerate}
+\end{solution}
+
+\begin{exercisechap}
+תהי
+\begin{align*}
+\text{.} A = \pmat{-3 & -4 & -6 & -3 & -3 & 0 \\ -2 & -3 & -4 & -3 & -3 & 0 \\ 3 & 3 & 5 & 3 & 3 & 0 \\ -1 & 2 & 1 & 2 & 0 & 0 \\ 2 & 1 & 3 & 0 & 2 & 0 \\ 3 & 3 & 3 & 3 & 3 & 2} \in \Mat_6\prs{\mbb{C}}
+\end{align*}
+
+מיצאו את הערכים העצמיים של
+$A$
+ועבור כל אחד מהם מיצאו ריבוי אלגברי וגיאומטרי.
+\end{exercisechap}
+
+\begin{solution}
+נחשב ראשית את הפולינום האופייני של
+$A$.
+
+\begin{align*}
+p_A\prs{x} &= \det\prs{xI - A}
+\\&=
+\det\pmat{x +3 & 4 & 6 & 3 & 3 & 0 \\
+2 & x+3 & 4 & 3 & 3 & 0 \\
+-3 & -3 & x-5 & -3 & -3 & 0 \\
+1 & -2 & -1 & x-2 & 0 & 0 \\
+-2 & -1 & -3 & 0 & x-2 & 0 \\
+-3 & -3 & -3 & -3 & -3 & x-2}
+\\&=
+\prs{x-2} \pmat{x +3 & 4 & 6 & 3 & 3 \\
+2 & x+3 & 4 & 3 & 3 \\
+-3 & -3 & x-5 & -3 & -3 \\
+1 & -2 & -1 & x-2 & 0\\
+-2 & -1 & -3 & 0 & x-2}
+\\&= \ldots
+\\ \text{.} \hphantom{p_A\prs{x}} &= \prs{x-2} \prs{x^5 - 3x^4 + x^3 + x^2 + 4}
+\end{align*}
+ניתן לראות כי
+$2$
+הינו ערך עצמי של
+$A$,
+כי הוא שורש של
+$p_A\prs{x}$.
+נחשב את הריבוי שלו
+$r_a\prs{2}$,
+ששווה לערך
+$i \in \mbb{N}$
+המינימלי עבורו
+$p_A\prs{x}^{\prs{i}}\prs{2} \neq 0$,
+כאשר
+$f^{\prs{k}}$
+הינה הנגזרת ה־%
+$k$-ית
+של
+$f$.
+מתקיים
+\begin{align*}
+p_A\prs{x} &= x^6 - 5x^5 + 7x^4 - x^3 -2x^2 + 4x - 8
+\\
+p_A'\prs{x} &= 6x^5 - 25x^4 + 28x^3 - 3x^2 -4x + 4
+\\
+p_A'\prs{2} &= 6 \cdot 32 - 20 \cdot 16 + 28 \cdot 8 - 3 \cdot 4 - 4 \cdot 2 + 4 = 0
+\\
+p_A''\prs{x} &= 30x^4 - 100x^3 + 84 x^2 - 6x - 4
+\\
+p_A''\prs{2} &= 30\cdot 16 - 100\cdot 8 + 84 \cdot 4 - 6 \cdot 2 - 4 = 0
+\\
+p_A'''\prs{x} &= 120 x^3 - 300 x^2 + 168 x - 6
+\\
+p_A'''\prs{2} &= 120 \cdot 8 - 300 \cdot 4 + 168 \cdot 2 - 6 = 90 \neq 0
+\end{align*}
+ולכן
+$r_a\prs{2} = 3$.
+נקבל כי
+$\prs{x-2}^3 = x^3 - 6x^2 + 12x - 8$
+מחלק את
+$p_A\prs{x}$
+וכדי למצוא ערכים עצמיים נוספים נבצע חילוק פולינומים.
+
+בכל שלב נכפול את הפולינום בו אנו מחלקות במונום מתאים כך שהכפל יהיה בעל אותו גורם מוביל כמו הפולינום שקיבלנו לאחר חיסור בשלב הקודם, ולאחר מכן נחסר זאת מהפולינום שקיבלנו בשלב הקודם. נסכום את המונומים המתאימים כדי לקבל את המנה, כאשר אם נשארנו עם פולינום מדרגה קטנה יותר מזה שאנו מחלקות בו, הוא יהיה שארית החלוקה.
+
+\begin{center}
+\polylongdiv{x^6-5x^5+7x^4-x^3-2x^2+4x-8}{x^3-6x^2+12x-8}
+\end{center}
+
+לכן
+\[p_A\prs{x} = \prs{x-2}^3 \prs{x^3 + x^2 + x + 1}\]
+וניתן לראות כי
+$-1$
+שורש של
+$x^3 + x^2 + x + 1$
+(הוא שורש של כל פולינום ממעלה אי־זוגית שכל מקדמיו
+$1$)
+נבצע חילוק פולינומים נוסף
+
+\begin{center}
+\polylongdiv{x^3+x^2+x+1}{x+1}
+\end{center}
+
+ולכן
+\[p_A\prs{x} = \prs{x-2}^3 \prs{x+1} \prs{x^2 + 1} = \prs{x-2}^3 \prs{x+1} \prs{x + i} \prs{x - i}\]
+ונקבל כי הערכים העצמיים הם
+$2$
+מריבוי אלגברי
+$3$,
+ו־%
+$-1, i, -i$
+כל אחד מריבוי אלגברי
+$1$.
+
+כיוון שהריבוי הגיאומטרי תמיד גדול או שווה ל־%
+$1$
+וקטן או שווה לריבוי האלגברי, נקבל כי
+$r_g\prs{-1} = r_g\prs{i} = r_g\prs{-i} = 1$
+ולכן נותר למצוא את הריבוי הגיאומטרי של
+$2$,
+ששווה לדרגת המטריצה
+$A - 2I$.
+נחשב דרגה זאת.
+
+\begin{align*}
+A - 2I &=
+\pmat{-5 & -4 & -6 & -3 & -3 & 0 \\
+-2 & -5 & -4 & -3 & -3 & 0 \\
+3 & 3 & 3 & 3 & 3 & 0 \\
+-1 & 2 & 1 & 0 & 0 & 0 \\
+2 & 1 & 3 & 0 & 0 & 0 \\
+3 & 3 & 3 & 3 & 3 & 0}
+\\& \xrightarrow{C_5 \mapsto C_5 - C_4}
+\pmat{-5 & -4 & -6 & -3 & 0 & 0 \\
+-2 & -5 & -4 & -3 & 0 & 0 \\
+3 & 3 & 3 & 3 & 0 & 0 \\
+-1 & 2 & 1 & 0 & 0 & 0 \\
+2 & 1 & 3 & 0 & 0 & 0 \\
+3 & 3 & 3 & 3 & 0 & 0}
+\\& \xrightarrow{\substack{C_1 \mapsto C_1 - C_4 \\ C_2 \mapsto C_2 - C_4 \\ C_3 \mapsto C_3 - C_4}}
+\pmat{-2 & -1 & -3 & -3 & 0 & 0 \\
+1 & -2 & -1 & -3 & 0 & 0 \\
+0 & 0 & 0 & 3 & 0 & 0 \\
+-1 & 2 & 1 & 0 & 0 & 0 \\
+2 & 1 & 3 & 0 & 0 & 0 \\
+0 & 0 & 0 & 3 & 0 & 0}
+\\& \xrightarrow{C_3 \mapsto C_3 - C_1 - C_2}
+\pmat{-2 & -1 & 0 & -3 & 0 & 0 \\
+1 & -2 & 0 & -3 & 0 & 0 \\
+0 & 0 & 0 & 3 & 0 & 0 \\
+-1 & 2 & 0 & 0 & 0 & 0 \\
+2 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 3 & 0 & 0}
+\end{align*}
+וניתן לראות מכאן כי
+$\rank\prs{A-2I} = 3$,
+לכן
+$r_g\prs{2} = 3$.
+
+\end{solution}
+
+\begin{exercisechap}
+\begin{enumerate}
+\item תהיינה
+$A,B \in \Mat_n\prs{\FF}$
+ונניח כי
+$B$
+לכסינה ועם
+$n$
+ערכים עצמיים שונים
+$\lambda_1, \ldots, \lambda_n$,
+וכי
+$AB = BA$.
+
+הוכיחו כי
+$A$
+לכסינה.
+
+\item הוכיחו כי
+\begin{align*}
+B = \pmat{0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \ddots & \vdots \\ \vdots & \ddots & \ddots & \ddots & 0 \\ 0 & \ddots & \ddots & 0 & 1 \\ 1 & 0 & \cdots & \cdots & 0} \in \Mat_n\prs{\CC}
+\end{align*}
+הינה לכסינה, מיצאו
+$P \in \Mat_n\prs{\CC}$
+עבורה
+$P^{-1} B P$
+אלכסונית,
+והראו כי כל מטריצה
+$A \in \Mat_n\prs{\CC}$
+עבורה
+$AB = BA$
+גם היא לכסינה.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+נרצה להשתמש בהגדרה של ערכים עצמיים, ולכן נרצה וקטורים עצמיים מתאימים.
+יהי
+$\mcal{B} \coloneqq \prs{v_1, \ldots, v_n}$
+בסיס של
+$\FF^מ$
+עבורו
+$B v_i = \lambda_i$
+לכל
+$i \in [n]$.
+
+אז, לכל
+$i \in [n]$,
+\begin{align*}
+\text{.} BA v_i = AB v_i = \lambda_i A v_i
+\end{align*}
+אם
+$A v_i = 0$
+נקבל כי
+$v_i$
+וקטור עצמי של
+$A$
+עם ערך עצמי
+$0$,
+ואחרת נקבל כי
+$A v_i$
+וקטור עצמי של
+$B$
+עם ערך עצמי
+$\lambda_i$,
+אך כיוון ש־%
+$V^B_{\lambda_i} = \Span\prs{v_i}$
+נקבל כי
+$A v_i \in \Span\prs{v_i}$.
+כלומר, קיים
+$\mu_i \in \FF$
+עבורו
+$A v_i = \mu_i v_i$,
+ולכן
+$v_i$
+וקטור עצמי של
+$A$
+עם ערך עצמי
+$\mu_i$.
+נקבל בסך הכל כי כל
+$v_i$
+הוא וקטור עצמי של
+$A$,
+ולכן
+$\mcal{B}$
+בסיס מלכסן גם של
+$A$.
+
+\item
+נחפש את הערכים העצמיים האפשריים של
+$B$.
+יהי
+$\lambda \in \CC$
+ערך עצמי. אז קיים
+\begin{align*}
+v = \pmat{v_1 \\ \vdots \\ v_{n-1}} \in \CC^n
+\end{align*}
+עבורו
+\begin{align*}
+\lambda v = Bv = \pmat{v_2 \\ v_3 \\ \vdots \\ v_n \\ v_1}
+\end{align*}
+ולאחר כפל משמאל
+$n$
+פעמים ב־%
+$B$
+נקבל
+\begin{align*}
+\text{.} \lambda^n v = B^n v = v
+\end{align*}
+לכן
+$\lambda^n = 1$
+ולכן
+\[\text{.} \lambda \in \set{\mathrm{cis}\prs{\frac{2 \pi k}{n}}}{k \in [n]}\]
+נראה שאכן כל ערך בקבוצה זאת הוא ערך עצמי, ונקבל
+$n$
+ערכים עצמיים שונים. אכן הערך
+\[\lambda_k \coloneqq \mathrm{cis}\prs{\frac{2 \pi k}{n}}\]
+הוא ערך עצמי עם וקטור עצמי
+\[u_k \coloneqq \pmat{1 \\ \lambda_k \\ \vdots \\ \lambda_k^{n-1}}\]
+שכן
+\begin{align*}
+\text{.} A u_k = \pmat{\lambda_k \\ \vdots \\ \lambda_k^{n-1} \\ 1} = \lambda_k \pmat{1 \\ \lambda_k \\ \vdots \\ \lambda_k^{n-1}} = \lambda_k u_k
+\end{align*}
+
+כעת, כדי למצוא
+$P \in \Mat_n\prs{\CC}$
+עבורה
+$P^{-1} B P$
+אלכסונית, ניקח מטריצה שעמודותיה הן איברי הבסיס
+$\mcal{B} \coloneqq \prs{u_1, \ldots, u_n}$.
+כדי לראות זאת, נשים לב כי
+\begin{align*}
+\brs{T_B}_{\mcal{B}} = \diag\prs{\lambda_1, \ldots, \lambda_n}
+\end{align*}
+ונקבל לפי נוסחאת מעבר בסיס כי
+\begin{align*}
+\diag\prs{\lambda_1, \ldots, \lambda_n} &= \brs{T_B}_{\mcal{B}}
+\\
+\\&=
+\prs{M^{\mcal{B}}_{\mcal{E}}}^{-1} \brs{T_B}_{\mcal{E}} M^{\mcal{B}}_{\mcal{E}}
+\end{align*}
+ולאחר סימון
+\begin{align*}
+P \coloneqq M^{\mcal{B}}_{\mcal{E}}
+\end{align*}
+נקבל כי
+\begin{align*}
+P^{-1} B P = \diag\prs{\lambda_1, \ldots, \lambda_n}
+\end{align*}
+אלכסונית, כנדרש.
+
+לבסוף, נציין שכיוון ש־%
+$B$
+לכסינה עם
+$n$
+ערכים עצמיים שונים, לפי הסעיף הראשון כל מטריצה
+$A \in \Mat_n\prs{\CC}$
+המתחלפת איתה גם היא לכסינה.
+
+לפי דרך הפתרון של הסעיף הראשון נראה אפילו כי
+$P^{-1} A P$
+אלכסונית לכל
+$A$
+כזאת.
+\end{enumerate}
+\end{solution}
+
+\begin{remark}
+מטריצות המתחלפות עם המטריצה
+$B$
+מהסעיף הקודם נקראות
+\emph{סירקולנטיות}
+\textenglish{(circulant)}
+ויש להן שימושים באנליזה נומרית וקריפטוגרפיה.
+\end{remark}
 
 \part{מרחבי מכפלה פנימית}
 
