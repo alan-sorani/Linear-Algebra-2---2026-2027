@@ -6,8 +6,8 @@
 \contentsline {chapter}{\numberline {2}ערכים עצמיים}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}הגדרות ותכונות בסיסיות}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}תרגילים על הדטרמיננטה}{10}{section.2.2}%
-\contentsline {section}{\numberline {2.3}הפולינום האופייני}{12}{section.2.3}%
-\contentsline {section}{\numberline {2.4}תרגילים על הפולינום האופייני}{13}{section.2.4}%
+\contentsline {section}{\numberline {2.3}הפולינום האופייני}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}תרגילים על הפולינום האופייני}{12}{section.2.4}%
 \contentsline {part}{II\hspace {1em}מרחבי מכפלה פנימית}{20}{part.2}%
 \contentsline {part}{III\hspace {1em}צורת ז'ורדן}{21}{part.3}%
 \contentsline {part}{IV\hspace {1em}אלגברה מולטילינארית}{22}{part.4}%

@@ -137,7 +137,7 @@ $\ZZ, \Mat_n\prs{\RR}$
 \begin{definition}[העתקה לינארית]
 יהיו
 $V,W$
-מרחבים וקטוריים סוף־מימדיים מעל אותו שדה
+מרחבים וקטוריים מעל אותו שדה
 $\FF$.
 העתקה
 $T \colon V \to W$
@@ -340,7 +340,7 @@ $m \coloneqq \dim\prs{W}$.
 עבור
 $T \in \Hom_{\mbb{F}}\prs{V,W}$
 נגדיר
-\[\text{.} \brs{T}^\mcal{B}_\mcal{C} = \pmat{\vert & & \vert \\ \brs{T\prs{v_1}}_\mcal{C} & \cdots & \brs{T\prs{v_n}}_\mcal{C} \\ \vert & & \vert} \in \Mat_{m \times n}\prs{\mbb{F}}\]
+\[\text{.} \brs{T}_{\mcal{B},\mcal{C}} = \pmat{\vert & & \vert \\ \brs{T\prs{v_1}}_\mcal{C} & \cdots & \brs{T\prs{v_n}}_\mcal{C} \\ \vert & & \vert} \in \Mat_{m \times n}\prs{\mbb{F}}\]
 \end{definition}
 
 \begin{theorem}[כפל מטריצות]
@@ -376,8 +376,8 @@ $AB = \pmat{\vert & & \vert \\ A b_1 & \cdots & A b_\ell \\ \vert & & \vert}$.
 \begin{remark}
 ההעתקה
 \begin{align*}
-\eta^\mcal{B}_\mcal{C} \colon \Hom_{\mbb{F}}\prs{V,B} &\to \Mat_{m \times n}\prs{\mbb{F}} \\
-T &\mapsto \brs{T}^\mcal{B}_\mcal{C}
+\eta_{\mcal{B},\mcal{C}} \colon \Hom_{\mbb{F}}\prs{V,B} &\to \Mat_{m \times n}\prs{\mbb{F}} \\
+T &\mapsto \brs{T}_{\mcal{B},\mcal{C}}
 \end{align*}
 היא איזומורפיזם לינארי.
 \end{remark}
@@ -394,7 +394,7 @@ $\mcal{C}$
 בסיס של
 $W$.
 אז
-\[\brs{T}^\mcal{B}_\mcal{C} \brs{v}_\mcal{B} = \brs{T\prs{v}}_\mcal{C}\]
+\[\brs{T}_{\mcal{B},\mcal{C}} \brs{v}_\mcal{B} = \brs{T\prs{v}}_\mcal{C}\]
 לכל
 $v \in V$.
 \end{proposition}
@@ -407,7 +407,7 @@ $V$
 ואם
 $T \in \End\prs{V}$,
 נסמן
-$\brs{T}_\mcal{B} \coloneqq \brs{T}^\mcal{B}_\mcal{B}$
+$\brs{T}_\mcal{B} \coloneqq \brs{T}_{\mcal{B},\mcal{B}}$
 ונקרא למטריצה זאת
 \emph{המטריצה המייצגת של
 $T$
@@ -421,7 +421,7 @@ $V$
 מרחב וקטורי סוף־מימדי עם בסיסים
 $\mcal{B},\mcal{C}$.
 נסמן
-$M^\mcal{B}_\mcal{C} \coloneqq \brs{\id_V}^\mcal{B}_\mcal{C}$.
+$M_{\mcal{B},\mcal{C}} \coloneqq \brs{\id_V}_{\mcal{B},\mcal{C}}$.
 \end{notation}
 
 \begin{notation}
@@ -548,7 +548,7 @@ S \in \Hom_{\mbb{F}}\prs{U,V} \\
 \text{.} T \in \Hom_{\mbb{F}}\prs{V,W}
 \end{align*}
 אז
-\[\text{.} \brs{T \circ S}^\mcal{B}_\mcal{D} = \brs{T}^\mcal{C}_\mcal{D} \brs{S}^\mcal{B}_\mcal{C}\]
+\[\text{.} \brs{T \circ S}_{\mcal{B},\mcal{D}} = \brs{T}_{\mcal{C},\mcal{D}} \brs{S}_{\mcal{B},\mcal{C}}\]
 \end{proposition}
 
 \chapter{ערכים עצמיים}
@@ -972,18 +972,18 @@ $\det\prs{\brs{T}_\mcal{B}} = \det\prs{\brs{T}_\mcal{C}}$.
 \begin{solution}
 מתקיים
 \begin{align*}
-\brs{T}_\mcal{B} = \prs{M^\mcal{B}_\mcal{C}}^{-1} \brs{T}_\mcal{C} M^\mcal{B}_\mcal{C}
+\brs{T}_\mcal{B} = \prs{M_{\mcal{B},\mcal{C}}}^{-1} \brs{T}_\mcal{C} M_{\mcal{B},\mcal{C}}
 \end{align*}
 ולכן
 \begin{align*}
-\text{.} \det\prs{\brs{T}_\mcal{B}} &= \det\prs{\prs{M^\mcal{B}_\mcal{C}}^{-1}} \det\prs{\brs{T}_\mcal{C}} \det\prs{M^\mcal{B}_\mcal{C}}
+\text{.} \det\prs{\brs{T}_\mcal{B}} &= \det\prs{\prs{M_{\mcal{B},\mcal{C}}}^{-1}} \det\prs{\brs{T}_\mcal{C}} \det\prs{M_{\mcal{B},\mcal{C}}}
 \end{align*}
 כיוון ש־%
 $\det\prs{A^{-1}} = \frac{1}{\det\prs{A}}$
  לכל מטריצה
  $A$,
  מתקיים
- $\det\prs{\prs{M^\mcal{B}_\mcal{C}}^{-1}} = \frac{1}{\det\prs{M^\mcal{B}_\mcal{C}}}$.
+ $\det\prs{\prs{M_{\mcal{B},\mcal{C}}}^{-1}} = \frac{1}{\det\prs{M_{\mcal{B},\mcal{C}}}}$.
  לכן, נקבל בסה"כ כי
  \[\text{,} \det\prs{\brs{T}_\mcal{B}} = \det\prs{\brs{T}_\mcal{C}}\]
  כנדרש.
@@ -1383,11 +1383,11 @@ $\rho_\theta$.
 \[D \coloneqq \brs{T_{\rho_\theta}}_{\mcal{B}} = \diag\prs{x_1, x_2}\]
 ומתקיים
 \begin{align*}
-D = \prs{M^{\mcal{B}}_{\mcal{E}}}^{-1} \brs{T_{\rho_\theta}}_{\mcal{E}} M^{\mcal{B}}_{\mcal{E}}
+D = \prs{M_{\mcal{B},\mcal{E}}}^{-1} \brs{T_{\rho_\theta}}_{\mcal{E}} M_{\mcal{B},\mcal{E}}
 \end{align*}
 לפי נוסחת מעבר בסיס. לכן אם נסמן
 \begin{align*}
-P \coloneqq M^{\mcal{B}}_{\mcal{E}} = \pmat{1 & 1 \\ -i & i}
+P \coloneqq M_{\mcal{B},\mcal{E}} = \pmat{1 & 1 \\ -i & i}
 \end{align*}
 נקבל כי
 \begin{align*}
@@ -1690,11 +1690,11 @@ $\mcal{B} \coloneqq \prs{u_1, \ldots, u_n}$.
 \diag\prs{\lambda_1, \ldots, \lambda_n} &= \brs{T_B}_{\mcal{B}}
 \\
 \\&=
-\prs{M^{\mcal{B}}_{\mcal{E}}}^{-1} \brs{T_B}_{\mcal{E}} M^{\mcal{B}}_{\mcal{E}}
+\prs{M_{\mcal{B},\mcal{E}}}^{-1} \brs{T_B}_{\mcal{E}} M_{\mcal{B},\mcal{E}}
 \end{align*}
 ולאחר סימון
 \begin{align*}
-P \coloneqq M^{\mcal{B}}_{\mcal{E}}
+P \coloneqq M_{\mcal{B},\mcal{E}}
 \end{align*}
 נקבל כי
 \begin{align*}

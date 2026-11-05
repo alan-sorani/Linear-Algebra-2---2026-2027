@@ -1,0 +1,231 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}     
+            
+%BIBLIOGRAPHY
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
+\addbibresource{bibliography.bib} %Imports bibliography file
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 1 \\
+מטריצות מייצגות, ערכים עצמיים, ולכסון
+\\
+\vspace{1cm}
+\large{תאריך הגשה: 12.11.2026}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}
+יהי
+$\mcal{E} = \prs{e_1, \ldots, e_n}$
+הבסיס הסטנדרטי של
+$\mathbb{F}^n$,
+ונזכיר כי עבור בסיס
+$\mcal{B}$
+של מרחב וקטורי סוף־מימדי
+$V$
+מעל
+$\mbb{F}$
+קיים איזומורפיזם
+\begin{align*}
+\rho_\mcal{B} : V &\to \mbb{F}^n \\
+\text{.} \hphantom{lalala} v &\mapsto \brs{v}_\mcal{B}
+\end{align*}
+הראו כי
+$\rho_{\mcal{E}} : \mathbb{F}^n \to \mathbb{F}^n$
+הינה העתקת הזהות.
+\end{exercise}
+
+\begin{exercise}
+יהי
+$\mcal{B} \coloneqq \prs{v_i}_{i \in [n]} = \prs{v_1, \ldots, v_n}$
+בסיס למרחב וקטורי
+$V$.
+נתונה
+$T \colon V \to V$
+הפיכה המקיימת
+\[\text{.} T\prs{v_1 + 2 v_2} = \sum_{i \in [n]} v_i\]
+מצאו את סכום כל מקדמי המטריצה
+$\brs{T^{-1}}_{\mcal{B}}$.
+
+למשל, אם
+$\brs{T^{-1}}_{\mcal{B}} = \pmat{1 & 2 \\ 3 & 4}$,
+הסכום הוא
+$1+2+3+4 = 10$.
+\end{exercise}
+
+\begin{exercise}
+יהיו
+$V,W$
+מרחבים וקטוריים סוף־מימדיים מעל שדה
+$\mbb{F}$
+ותהי
+$T \in \Hom_{\mbb{F}}\prs{V,W}$
+העתקה לינארית חד־חד ערכית.
+
+יהיו
+\begin{align*}
+\mcal{B} &= \prs{v_1, \ldots, v_n} \\
+\mcal{C} &= \prs{u_1, \ldots, u_n}
+\end{align*}
+בסיסים של
+$V$
+ויהיו
+\begin{align*}
+\mcal{B}' &= \prs{T\prs{v_1}, \ldots, T\prs{v_n}} \\
+\text{.} \mcal{C}' &= \prs{T\prs{u_1}, \ldots, T\prs{u_n}}
+\end{align*}
+
+\begin{enumerate}
+\item
+הראו כי
+$\dim V = \dim \im T$.
+
+\item הראו כי
+$\mcal{B}', \mcal{C}'$
+קבוצות בלתי תלויות לינאריות, והסיקו כי הן בסיסים של
+$\im\prs{T} = \set{T\prs{v}}{v \in V}$.
+
+\item
+הראו כי
+$M^\mcal{B}_\mcal{C} = M^{\mcal{B}'}_{\mcal{C}'}$.
+
+\textbf{רמז:}
+כיתבו את
+$M^\mcal{B}_\mcal{C} e_i$
+ואת
+$M^{\mcal{B}'}_{\mcal{C}'} e_i$
+כוקטורי קואורדינטות לפי הבסיסים
+$\mcal{C}$
+ו־%
+$\mcal{C}'$
+בהתאמה, והראו שמתקיים שוויון.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+כדי ללכסן אופרטור
+$T \in \End_\FF\prs{V}$
+נסתכל לפעמים על בסיס
+$\mcal{B}$
+של
+$V$
+ונמצא מטריצה
+$P$
+הפיכה עבורה
+$D \coloneqq P^{-1} \brs{T}_B P$
+מטריצה אלכסונית.
+כדי לקבל מכך בסיס
+$\mcal{C}$
+עבורו
+$\brs{T}_{\mcal{C}}$
+אלכסונית נרצה שיתקיים
+$P = M^{\mcal{C}}_{\mcal{B}}$,
+ואכן אז
+\[D = P^{-1} \brs{T}_B P = \prs{M^{\mcal{C}}_{\mcal{B}}}^{-1} \brs{T}_B M^{\mcal{C}}_{\mcal{B}} = \brs{T}_{\mcal{C}}\]
+לפי נוסחת מעבר בסיס.
+
+\begin{enumerate}
+\item יהי
+$n \in \NN_+$,
+תהי
+$P \in \Mat_n\prs{\FF}$
+מטריצה הפיכה ויהי
+$\mcal{E} = \prs{e_1, \ldots, e_n}$
+הבסיס הסטנדרטי של
+$\FF^n$.
+מיצאו בסיס
+$\mcal{C}$
+של
+$\FF^n$
+עבורו
+$P = M^\mcal{C}_\mcal{E}$.
+
+\item יהי
+$V$
+מרחב וקטורי ממימד
+$n$
+מעל
+$\FF$
+ויהי
+$\mcal{B}$
+בסיס של
+$V$.
+מיצאו בסיס
+$\mcal{C}$
+של
+$V$
+עבורו
+$P = M^\mcal{C}_\mcal{B}$.
+
+\textbf{רמז:}
+היעזרו בתרגיל הקודם.
+
+\item
+יהי
+$V = \RR_3\brs{x}$
+המרחב הוקטורי של פולינומים ממעלה לכל היותר
+$3$
+שמקדמיהם ממשיים, יהי
+\[\mcal{B} = \prs{1, 1-x, \prs{1-x}^2, \prs{1-x}^3}\]
+ויהי
+$T \in \End_\FF\prs{V}$
+עבורו
+\[\text{.} \brs{T}_\mcal{B} = \pmat{
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1
+}\]
+\begin{enumerate}
+\item 
+מיצאו מטריצות
+$D,P \in \Mat_4\prs{\RR}$
+כך ש־%
+$D$
+אלכסונית ו־%
+$P$
+הפיכה וכך שמתקיים
+\[\text{.} P^{-1} \brs{T}_\mcal{B} P = D\]
+\item
+מיצאו בסיס
+$\mcal{C}$
+של
+$V$
+עבורו
+$P = M^\mcal{C}_\mcal{B}$
+והסיקו כי
+$\brs{T}_\mcal{C} = D$.
+\end{enumerate}
+
+\end{enumerate}
+\end{exercise}
+
+\end{document}
