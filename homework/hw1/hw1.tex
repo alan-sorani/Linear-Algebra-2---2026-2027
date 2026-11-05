@@ -42,44 +42,7 @@ style=alphabetic,
 \begin{document}
 \maketitle
 
-\begin{exercise}
-יהי
-$\mcal{E} = \prs{e_1, \ldots, e_n}$
-הבסיס הסטנדרטי של
-$\mathbb{F}^n$,
-ונזכיר כי עבור בסיס
-$\mcal{B}$
-של מרחב וקטורי סוף־מימדי
-$V$
-מעל
-$\mbb{F}$
-קיים איזומורפיזם
-\begin{align*}
-\rho_\mcal{B} : V &\to \mbb{F}^n \\
-\text{.} \hphantom{lalala} v &\mapsto \brs{v}_\mcal{B}
-\end{align*}
-הראו כי
-$\rho_{\mcal{E}} : \mathbb{F}^n \to \mathbb{F}^n$
-הינה העתקת הזהות.
-\end{exercise}
-
-\begin{exercise}
-יהי
-$\mcal{B} \coloneqq \prs{v_i}_{i \in [n]} = \prs{v_1, \ldots, v_n}$
-בסיס למרחב וקטורי
-$V$.
-נתונה
-$T \colon V \to V$
-הפיכה המקיימת
-\[\text{.} T\prs{v_1 + 2 v_2} = \sum_{i \in [n]} v_i\]
-מצאו את סכום כל מקדמי המטריצה
-$\brs{T^{-1}}_{\mcal{B}}$.
-
-למשל, אם
-$\brs{T^{-1}}_{\mcal{B}} = \pmat{1 & 2 \\ 3 & 4}$,
-הסכום הוא
-$1+2+3+4 = 10$.
-\end{exercise}
+\vspace{-15pt}
 
 \begin{exercise}
 יהיו
@@ -115,13 +78,13 @@ $\im\prs{T} = \set{T\prs{v}}{v \in V}$.
 
 \item
 הראו כי
-$M^\mcal{B}_\mcal{C} = M^{\mcal{B}'}_{\mcal{C}'}$.
+$M_{\mcal{B},\mcal{C}} = M_{\mcal{B}',\mcal{C}'}$.
 
 \textbf{רמז:}
 כיתבו את
-$M^\mcal{B}_\mcal{C} e_i$
+$M_{\mcal{B},\mcal{C}} e_i$
 ואת
-$M^{\mcal{B}'}_{\mcal{C}'} e_i$
+$M_{\mcal{B}',\mcal{C}'} e_i$
 כוקטורי קואורדינטות לפי הבסיסים
 $\mcal{C}$
 ו־%
@@ -147,9 +110,9 @@ $\mcal{C}$
 עבורו
 $\brs{T}_{\mcal{C}}$
 אלכסונית נרצה שיתקיים
-$P = M^{\mcal{C}}_{\mcal{B}}$,
+$P = M_{\mcal{C},\mcal{B}}$,
 ואכן אז
-\[D = P^{-1} \brs{T}_B P = \prs{M^{\mcal{C}}_{\mcal{B}}}^{-1} \brs{T}_B M^{\mcal{C}}_{\mcal{B}} = \brs{T}_{\mcal{C}}\]
+\[D = P^{-1} \brs{T}_B P = \prs{M_{\mcal{C},\mcal{B}}}^{-1} \brs{T}_B M_{\mcal{C},\mcal{B}} = \brs{T}_{\mcal{C}}\]
 לפי נוסחת מעבר בסיס.
 
 \begin{enumerate}
@@ -166,7 +129,7 @@ $\mcal{C}$
 של
 $\FF^n$
 עבורו
-$P = M^\mcal{C}_\mcal{E}$.
+$P = M_{\mcal{C},\mcal{E}}$.
 
 \item יהי
 $V$
@@ -183,7 +146,7 @@ $\mcal{C}$
 של
 $V$
 עבורו
-$P = M^\mcal{C}_\mcal{B}$.
+$P = M_{\mcal{C},\mcal{B}}$.
 
 \textbf{רמז:}
 היעזרו בתרגיל הקודם.
@@ -192,22 +155,21 @@ $P = M^\mcal{C}_\mcal{B}$.
 יהי
 $V = \RR_3\brs{x}$
 המרחב הוקטורי של פולינומים ממעלה לכל היותר
-$3$
+$2$
 שמקדמיהם ממשיים, יהי
-\[\mcal{B} = \prs{1, 1-x, \prs{1-x}^2, \prs{1-x}^3}\]
+\[\mcal{B} = \prs{1, 1-x, \prs{1-x}^2}\]
 ויהי
 $T \in \End_\FF\prs{V}$
 עבורו
 \[\text{.} \brs{T}_\mcal{B} = \pmat{
-1 & 0 & 1 & 0 \\
-0 & 1 & 0 & 1 \\
-1 & 0 & 1 & 0 \\
-0 & 1 & 0 & 1
+1 & -1& 2 \\
+0 & 2 & 0 \\
+0 & 0 & 3
 }\]
 \begin{enumerate}
 \item 
 מיצאו מטריצות
-$D,P \in \Mat_4\prs{\RR}$
+$D,P \in \Mat_3\prs{\RR}$
 כך ש־%
 $D$
 אלכסונית ו־%
@@ -220,12 +182,63 @@ $\mcal{C}$
 של
 $V$
 עבורו
-$P = M^\mcal{C}_\mcal{B}$
+$P = M_{\mcal{C},\mcal{B}}$
 והסיקו כי
 $\brs{T}_\mcal{C} = D$.
 \end{enumerate}
-
 \end{enumerate}
+\end{exercise}
+
+\textbf{שימו לב שיש תרגיל נוסף בעמוד הבא.}
+
+\begin{exercise}
+הגעתן לסוף הגיליון והגיע זמן לקחת הפסקה ולעשות ספורט! אבל כדי לעשות זאת כשורה, צריך לחשוב קודם כמה דרכים יש לתכנן לוח אימונים.
+
+כדי לאזן עם תחביבים, חברים ולימודים, נגיד שלוח אימונים אפשרי הוא כזה שבו לא נתאמן שני ימים ברציפות. בכל יום האפשרויות שלנו יהיו אימון אירובי, אימון כוח, או מנוחה.
+
+ נסמן ב־%
+$S_n$
+את מספר לוחות האימונים האפשריים עבור
+$n$
+ימים, ונסמן
+$S_0 = 1$.
+
+\begin{enumerate}
+\item כיתבו את
+$S_n$
+באמצעות ריקורסיה לינארית. כלומר, מיצאו ערכים התחלתיים
+$S_1, \ldots, S_k$
+ועבור כל
+$n > k$
+כיתבו את הערך
+$S_n$
+כצירוף לינארי של ערכים הקודמים לו.
+
+\textbf{רמז:}
+חישבו כמה לוחות אימונים עבור
+$n$
+ימים מסתיימים עם כל אופציה עבור היום האחרון.
+
+\item
+מיצאו $m \in \NN$,
+וקטור
+$v_0 \in \RR^m$
+ואופרטור
+$T \in \End_\RR\prs{\RR^m}$
+עבורם
+$S_n$
+הוא הרכיב הראשון של
+$T^n \prs{v_0}$
+לכל
+$n \in \NN$.
+
+\item
+היעזרו באופרטור
+$T$
+כדי למצוא נוסחה סגורה עבור
+$S_n$.
+\end{enumerate}
+
 \end{exercise}
 
 \end{document}

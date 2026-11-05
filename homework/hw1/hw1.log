@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.29)  3 NOV 2026 11:56
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.29)  5 NOV 2026 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1920,7 +1920,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 LaTeX Warning: No \author given.
 
 Package hyperref Info: bookmark level for unknown exercise defaults to 0 on inp
-ut line 46.
+ut line 48.
 [1
 
 ]
@@ -1941,7 +1941,7 @@ Package logreq Info: Writing requests to 'hw1.run.xml'.
 Here is how much of TeX's memory you used:
  43286 strings out of 402983
  913579 string characters out of 5448068
- 1969993 words of memory out of 5000000
+ 1968993 words of memory out of 5000000
  71342 multiletter control sequences out of 15000+600000
  635638 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
