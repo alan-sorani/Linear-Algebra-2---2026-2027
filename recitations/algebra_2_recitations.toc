@@ -1,5 +1,5 @@
 \xpg@aux {calendar=gregorian}{hebrew}
-\contentsline {part}{I\hspace {1em}חזרה}{2}{part.1}%
+\contentsline {part}{I\hspace {1em}חזרה ונושאים כלליים}{2}{part.1}%
 \contentsline {chapter}{\numberline {1}העתקות לינאריות ומטריצות מייצגות}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}הגדרות ותכונות בסיסיות}{3}{section.1.1}%
 \contentsline {section}{\numberline {1.2}תרגילים}{5}{section.1.2}%
@@ -8,6 +8,10 @@
 \contentsline {section}{\numberline {2.2}תרגילים על הדטרמיננטה}{10}{section.2.2}%
 \contentsline {section}{\numberline {2.3}הפולינום האופייני}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}תרגילים על הפולינום האופייני}{12}{section.2.4}%
-\contentsline {part}{II\hspace {1em}מרחבי מכפלה פנימית}{20}{part.2}%
-\contentsline {part}{III\hspace {1em}צורת ז'ורדן}{21}{part.3}%
-\contentsline {part}{IV\hspace {1em}אלגברה מולטילינארית}{22}{part.4}%
+\contentsline {chapter}{\numberline {3}פונקציונלים לינאריים והמרחב הדואלי}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}פונקציונלים לינאריים}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}אופרטורים על המרחב הדואלי}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}תת־מרחבים מאפסים}{24}{section.3.3}%
+\contentsline {part}{II\hspace {1em}מרחבי מכפלה פנימית}{25}{part.2}%
+\contentsline {part}{III\hspace {1em}צורת ז'ורדן}{26}{part.3}%
+\contentsline {part}{IV\hspace {1em}אלגברה מולטילינארית}{27}{part.4}%

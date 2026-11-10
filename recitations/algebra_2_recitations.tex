@@ -112,7 +112,7 @@ $\mcal{B}, \mcal{C}, \mcal{D}$
 וכו'
 \end{itemize}
 
-\part{חזרה}
+\part{חזרה ונושאים כלליים}
 
 \chapter{העתקות לינאריות ומטריצות מייצגות}
 
@@ -1726,6 +1726,734 @@ $B$
 \textenglish{(circulant)}
 ויש להן שימושים באנליזה נומרית וקריפטוגרפיה.
 \end{remark}
+
+\chapter{פונקציונלים לינאריים והמרחב הדואלי}
+
+\section{פונקציונלים לינאריים}
+
+להעתקות לינאריות מעל שדה
+$\FF$
+שהטווח שלהן הוא
+$\FF$
+יש חשיבות מיוחדת והן נקראות
+\emph{פונקציונלים לינאריים}.
+דוגמאות חשובות להעתקות כאלו הן הצבה של ערך בפונקציה והאינטגרל המסוים.
+
+\begin{definition}[פונקציונל לינארי]
+יהי
+$V$
+מרחב וקטורי מעל שדה
+$\FF$.
+\emph{פונקציונל לינארי}
+על
+$V$
+הוא איבר של
+$\Hom_\FF\prs{V,\FF}$.
+\end{definition}
+
+\begin{notation}
+נסמן ב־%
+$V'$
+את מרחב הפונקציונליים הלינאריים על מרחב וקטורי
+$V$.
+זה מסומן לעתים
+$V^*$
+אך לא נשתמש בסימון זה.
+\end{notation}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב וקטורי
+$n$%
+־מימדי מעל שדה
+$\FF$
+ויהי
+$\phi \in V'$.
+מיצאו את
+$\dim \ker\prs{\phi}$.
+\end{exercisechap}
+
+\begin{solution}
+המרחב
+$\FF$
+הוא ממימד
+$1$
+ולכן
+$\im\prs{\phi}$
+היא
+$\FF$
+או
+$\set{0} \subseteq \FF$.
+אם התמונה היא מרחב האפס,
+$\phi = 0$
+ואז
+$\ker\prs{\phi} = V$
+ממימד
+$n$.
+אחרת, ממשפט המימדים מתקיים
+\[\dim_\FF V = \dim_\FF \im\prs{\phi} + \dim_\FF \ker\prs{\FF} = 1 + \dim_\FF \ker\prs{\FF}\]
+ולכן
+$\dim_\FF \ker\prs{\phi} = n - 1$.
+\end{solution}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב וקטורי
+$n$%
+־מימדי מעל
+$\FF$
+ויהי
+$\phi \in V' \setminus \set{0}$.
+הוכיחו שקיים בסיס
+$v_1, \ldots, v_n$
+של
+$V$
+עבורו
+\[\text{.} \phi\prs{v_i} = \delta_{i,1} \coloneqq \fcases{ 1 & i =1 \\ 0 & i \neq 1}\]
+כלומר כזה עבורו
+\begin{align*}
+\text{.} \phi\prs{\sum_{i \in [n]} \alpha_i v_i} = \alpha_1
+\end{align*}
+\end{exercisechap}
+
+\begin{solution}
+כדי למצוא בסיס כזה, נמצא תחילה
+$v_1 \in V$
+עבורו
+$\phi\prs{v_1} = 1$.
+כיוון ש־%
+$\phi \neq 0$,
+קיים
+$v \in V$
+עבורו
+$\alpha \coloneqq \phi\prs{v} \neq 0$.
+אז
+\[\phi\prs{\frac{1}{\alpha} v} = \frac{1}{\alpha} \cdot \alpha = 1\]
+ולכן ניקח
+$v_1 = \frac{1}{\alpha} v$.
+
+הראינו בתרגיל קודם כי
+$\ker\prs{\phi}$
+הינו
+$n-1$%
+־מימדי, ולכן אם ניקח
+$\prs{v_2, \ldots, v_n}$
+בסיס של
+$\ker\prs{\phi}$
+נקבל כי
+$\prs{v_1, \ldots, v_n}$
+בסיס של
+$V$
+כנדרש. זה אכן בסיס כי אף וקטור אינו צירוף לינארי של אלו של אחריו, שכן אחרת
+$v_1$
+היה בגרעין כצירוף לינארי של וקטורים בגרעין.
+\end{solution}
+
+ראינו בהרצאה שעבור בסיס
+$\prs{v_1, \ldots, v_n}$
+של
+$V$,
+הפונקציונלים
+$\varphi_1, \ldots, \varphi_n$
+עבורם
+\begin{align*}
+\varphi_j\prs{v_k} = \fcases{ 1 & k = j \\ 0 & k \neq j}
+\end{align*}
+מהווים בסיס של
+$V'$,
+ובפרט אלו פונקציונלים לינאריים. נקבל מהתרגיל האחרון שכל פונקציונל לינארי שונה מאפס הינו מהצורה הזאת עבור בסיס מתאים של
+$V$.
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי מעל
+$\FF$
+ויהי
+$U \leq V$
+תת־מרחב של
+$V$
+השונה מ־%
+$V$.
+הוכיחו כי קיים פונקציונל לינארי
+$\phi \in V' \setminus \set{0}$
+עבורו
+$\left. \phi \right|_U = 0$.
+\end{exercisechap}
+
+\begin{solution}
+ראינו שהגרעין של כל פונקציונל לינארי על מרחב ממימד
+$n$
+הוא ממימד
+$n-1$.
+ניקח תת־מרחב ממימד כזה המכיל את
+$U$,
+ונמצא פונקציונל לינארי שזה הגרעין שלו. נעשה זאת על ידי כך שנגדיר את הפונקציונל כאפס על תת־מרחב זה, ושונה מאפס על וקטור מסוים מחוץ לו.
+
+נסמן
+$n \coloneqq \dim_\FF\prs{V}$.
+כיוון ש־%
+$U \neq V$,
+הוא מוכל בתת־מרחב ממימד
+$n-1$.
+נבחר תת־מרחב כזה ונסמנו
+$\tilde{U}$.
+יהי
+$\prs{u_1, \ldots, u_{n-1}}$
+בסיס של
+$\tilde{U}$
+ויהי
+$v \in V \setminus \tilde{U}$.
+אז
+$\prs{u_1, \ldots, u_{n-1}, v}$
+בסיס של
+$V$.
+נגדיר
+$\phi \in V$
+על ידי
+$\phi\prs{u_i} = 0$
+לכל
+$i \in [n-1]$
+וגם
+$\phi\prs{v} = 1$,
+וזה פונקציונל לינארי כפי שראינו בהרצאה.
+\end{solution}
+
+\begin{definition}[הבסיס הדואלי]
+יהי
+$V$
+מרחב וקטורי סוף־מימדי עם בסיס
+$\mcal{B} = \prs{v_1, \ldots, v_n}$
+ונגדיר
+$\varphi_1, \ldots, \varphi_n$
+על ידי
+\begin{align*}
+\text{.} \varphi_j\prs{v_k} = \fcases{ 1 & k = j \\ 0 & k \neq j}
+\end{align*}
+אז
+\emph{הבסיס הדואלי}
+של
+$\mcal{B}$
+הוא
+$\mcal{B}' \coloneqq \prs{\varphi_1, \ldots, \varphi_n}$.
+\end{definition}
+
+\begin{proposition}
+יהי
+$\mcal{B} \coloneqq \prs{v_1, \ldots, v_n}$
+בסיס של מרחב־וקטורי סוף־מימדי
+$V$
+ויהי
+$\mcal{B}' \coloneqq \prs{\varphi_1, \ldots, \varphi_n}$
+הבסיס הדואלי. אז לכל
+$v \in V$
+מתקיים
+\begin{align*}
+\text{,} v = \varphi_1\prs{v} v_1 + \ldots + \varphi_n\prs{v} v_n
+\end{align*}
+כלומר
+\begin{align*}
+\text{.} \brs{v}_{\mcal{B}} = \pmat{\varphi_1\prs{v} \\ \vdots \\ \varphi_n\prs{v}}
+\end{align*}
+\end{proposition}
+
+נרצה לעתים לחשב את אחד הרכיבים של וקטור קואורדינטות בלי לחשב את הוקטור כולו. הבסיס הדואלי מאפשר לנו לעשות זאת.
+
+\begin{exercisechap}
+יהי
+$V = \RR_2\brs{x}$
+ויהי
+$\mcal{B} = \prs{1, x-1, \prs{x-1}^2}$.
+
+\begin{enumerate}
+\item מיצאו את הבסיס הדואלי
+$\mcal{B}'$.
+
+\item עבור כל אחד מהוקטורים
+$\prs{v_1, v_2, v_3, v_4} \coloneqq \prs{1, x, x^2, x+1}$,
+כיתבו את הרכיב השני של
+$\brs{v_i}_{\mcal{B}}$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item נסמן
+$\mcal{B}' = \prs{\varphi_1, \varphi_2, \varphi_3}$
+ונמצא את
+$\varphi_i$.
+יהי
+$p\prs{x} = ax^2 + bx + c \in V$
+ונמצא את
+$\varphi_i\prs{p}$
+לכל
+$i \in [3]$.
+
+מתקיים
+\begin{align*}
+p\prs{x} &= a \prs{x-1}^2 + 2ax - a + b\prs{x-1} + b + c
+\\&= a\prs{x-1}^2 + 2a\prs{x-1} + 2a - a + b\prs{x-1} + b + c
+\\&= a \prs{x-1}^2 + \prs{2a + b}\prs{x-1} + a + b + c
+\end{align*}
+ולכן
+$\varphi_2\prs{p} = 2a+b$.
+
+נקבל כי הקואורדינטות הן
+\begin{align*}
+\varphi_2\prs{1} &= 2 \\
+\varphi_2\prs{x} &= 1 \\
+\varphi_2\prs{x^2} &= 0 \\
+\varphi_2\prs{x+1} &= 3 
+\end{align*}
+כנדרש.
+\end{enumerate}
+\end{solution}
+
+\begin{exercisechap}
+יהי
+$V = \FF_n\brs{x}$
+ויהי
+$\mcal{E} = \prs{1, x, \ldots, x^n}$
+בסיס של
+$V$.
+יהי
+$\phi \in V'$.
+הוכיחו שקיימות
+$\alpha_1, \ldots, \alpha_n \in \FF$
+עבורן
+\[\text{.} \phi\prs{\sum_{i=0}^n a_i x^i} = \sum_{i=0}^n \alpha_i a_i\]
+\end{exercisechap}
+
+\begin{solution}
+נסמן ב־%
+$\mcal{E}' = \prs{\varphi_0, \ldots, \varphi_n}$
+את הבסיס הדואלי של
+$\mcal{E}$.
+אז
+$\varphi_i\prs{\sum_{j=0}^n a_j x^j} = a_i$,
+כי הערך של פונקציונל זה הוא המקדם של
+$x^i$
+בכתיבת הפולינום כצירוף לינארי של המונומים.
+
+אז קיימות
+$\alpha_0, \ldots, \alpha_n$
+עבורן
+\begin{align*}
+\phi = \sum_{i=0}^n \alpha_i \varphi_i
+\end{align*}
+ולכן
+\begin{align*}
+\phi\prs{p} = \sum_{i=0}^n \alpha_i \varphi_i\prs{p} = \sum_{i=0}^n \alpha_i a_i
+\end{align*}
+כנדרש.
+\end{solution}
+
+\begin{exercisechap}
+יהי
+$V = \RR_n\brs{x}$
+ויהי
+\[\text{.} I\prs{p} = \int_0^1 p\prs{x} \diff x\]
+עבור
+$a \in \RR$
+נסמן ב־%
+$\ev_a \in V'$
+את פונקציונל הצבת הערך
+$a$
+בפולינום:
+\[\text{.} \ev_a\prs{p}\prs{x} = p\prs{a}\]
+
+הוכיחו כי
+$I$
+הוא צירוף לינארי של
+$\ev_0, \ev_1, \ldots, \ev_n$.
+\end{exercisechap}
+
+\begin{solution}
+ניזכר כי פולינום
+מדרגה
+$d$
+נקבע ביחידות על ידי ערכיו ב־%
+$d+1$
+נקודות. אז הערכים
+$\ev_i\prs{p}$
+עבור
+$0 \leq i \leq n$
+קובעים את
+$p$
+ביחידות. הגיוני לחשוב לכן כי אלו מהווים בסיס. נראה זאת על ידי כך שנראה שהם בלתי־תלויים לינארית, וכיוון שמתקיים
+$\dim_\RR\prs{\RR_n\brs{x}} = n+1$
+נקבל כי זהו אכן בסיס.
+
+\begin{description}
+\item[דרך 1:]
+אם
+$\sum_{i=0}^n a_i \ev_i = 0$
+אז לכל
+$p \in V$
+מתקיים
+\begin{align*}
+\text{.} \sum_{i=0}^n a_i p\prs{i} = 0
+\end{align*}
+אינטואיטיבית, נוכל לקחת פולינומים כך שיתקיים
+$p_i\prs{i} \neq 0$
+וגם
+$p_i\prs{j} = 0$
+לכל
+$j \neq i$.
+אז מהצבת
+$p_i$
+במשוואה נקבל כי
+$a_i = 0$
+לכל
+$0 \leq i \leq n$
+ולכן הקבוצה בלתי־תלויה לינארית.
+לכן דרך אחת להמשיך כאן היא בעזרת משפט האינטרפולציה של לגרנג' שאומר כי לכל
+$x_0, \ldots, x_n, y_0, \ldots, y_n \in \FF$
+קיים
+$p \in \FF_n\brs{x}$
+עבורו
+$p\prs{x_i} = y_i$.
+
+\item[דרך 2:]
+
+דרך אחרת להמשיך, שאינה מסתמכת על המשפט, היא הסתכלות על המשוואות המתקבלות מהסתכלות על פולינומים בבסיס של
+$V$.
+יהי
+$\mcal{E} = \prs{1, x, \ldots, x^n}$
+בסיס של
+$V$.
+נקבל את המשוואות
+\begin{align*}
+\sum_{i=0}^n a_i j^n = 0
+\end{align*}
+לכל
+$0 \leq j \leq n$.
+נכתוב מערכת משוואות זאת באמצעות מטריצות ונקבל כי היא שקולה למערכת
+\[
+\text{.} \begin{pmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+0 & 1 & 2 & \cdots & n \\
+0^2 & 1^2 & 2^2 & \cdots & n^2 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0^n & 1^n & 2^n & \cdots & n^n
+\end{pmatrix}
+\begin{pmatrix}
+a_0 \\
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}
+\]
+המטריצה המתקבלת כאן נקראת
+\emph{מטריצת ונדרמונדה}.
+ניתן להראות כי היא הפיכה, ולכן הפתרון היחיד למערכת הוא
+\[\text{.} \forall 0 \leq i \leq n: a_i = 0\]
+
+\item[דרך 3:]
+
+דרך שלישית להראות את הנדרש היא בעזרת העתקות לינאריות. נבנה העתקה לינארית בעזרת הפונקציונלים הלינאריים:
+\begin{align*}
+T \colon \FF_n\brs{x} \to \FF^{n+1} \\
+p \mapsto \prs{p\prs{0}, p\prs{1} \ldots, p\prs{n}}^t
+\end{align*}
+אם
+$p\prs{0} = \ldots = p\prs{n} = 0$
+ידוע כי
+$p = 0$
+ולכן הגרעין של
+$T$
+טריוויאלי והיא העתקה הפיכה ובפרט על.
+
+אם
+$\ev_0, \ldots, \ev_n$
+היו תלויים לינארית, היה
+$0 \leq i \leq n$
+והיו
+$b_0, \ldots, b_{i-1}, b_{i+1}, \ldots, b_n \in \FF$
+עבורם
+\[\text{.} \ev_i = \sum_{\substack{0 \leq j \leq n \\ j \neq i}} b_j \ev_j\]
+אז
+\begin{align*}
+T\prs{p} = \pmat{p\prs{0} \\ \vdots \\ p\prs{i-1} \\ b_1 p\prs{1} + \ldots + b_{i-1} p\prs{i-1} + b_{i+1} p\prs{i+1} + \ldots + b_n p\prs{n} \\ p\prs{i+1} \\ \vdots \\ p\prs{n}}
+\end{align*}
+וקבוצת הערכים האלו נפרשת על ידי הוקטורים
+$e_j + b_j e_i$,
+ולכן אינה כל
+$\FF^{n+1}$,
+בסתירה לכך ש־%
+$T$
+על.
+\end{description}
+\end{solution}
+
+\section{אופרטורים על המרחב הדואלי}
+
+במתמטיקה אנו מתעסקות הרבה בהעתקות על אובייקטים. באינפי יש פונקציות על
+$\RR$,
+באלגברה לינארית יש פונקציות (העתקות לינאריות) על מרחבים וקטורים, וכו'. כאשר יש לנו העתקה
+$F$
+שלוקחת ומחזירה אוביקט מתמטי, נוח לחשוב אם מפונקציה
+$f \colon X \to Y$
+מתקבלת באופן טבעי פונקציה
+$F\prs{f} \colon F\prs{X} \to F\prs{Y}$.
+
+אצלנו
+$F\prs{V} = V'$
+ועבור העתקה לינארית
+$T \colon V \to W$
+נרצה לחפש העתקה לינארית
+$V' \to W'$.
+אם נסמן העתקה כזאת
+$T_*$
+היא תיקח פונקציונל לינארי
+$\phi \in V'$
+ותחזיר פונקציונל לינארי
+$T_*\prs{\phi'} \in W'$.
+
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+V \arrow[r, "T"] \arrow[d, "\phi"'] &
+W \arrow[dl, dotted, "T_*\prs{\phi}"] \\
+\mathbb{F} &
+\end{tikzcd}
+\]
+
+לא ברור לנו מהדיאגרמה איך לבנות העתקה כזאת.
+$T$
+ו־%
+$\phi$
+שניהם העתקות מ־%
+$V$,
+ולא נוכל להרכיב אותן. הם גם לא בהכרח הפיכות, כך שלא נוכל להיעזר ב־%
+$T^{-1}$
+שאינה בהכרח קיימת.
+
+נשים לב שאם נתחיל עם פונקציונל לינארי
+$\phi \colon W \to \FF$,
+כן נוכל לקבל פונקציונל לינארי
+$\phi \circ T \colon V \to \FF$
+על
+$V$.
+
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+V \arrow[r, "T"] \arrow[dr, "T'\prs{\phi}"'] &
+W \arrow[d, "\phi"] \\
+& \mathbb{F}
+\end{tikzcd}
+\qquad\qquad
+\]
+
+\begin{definition}[העתקה דואלית]
+יהיו
+$V,W$
+מרחבים וקטוריים מעל שדה
+$\FF$
+ותהי
+$T \in \Hom_\FF\prs{V,W}$.
+\emph{ההעתקה הדואלית}
+של
+$T$
+היא
+\begin{align*}
+T' \colon W' &\to V' \\
+\text{.} \hphantom{lalala} \phi &\mapsto \phi \circ T
+\end{align*}
+\end{definition}
+
+\begin{proposition}
+יהי
+$T \in \Hom_\FF\prs{V,W}$.
+אז:
+\begin{enumerate}
+\item $\prs{S+T}' = S' + T'$
+לכל
+$S \in \Hom_\FF\prs{V,W}$.
+\item $\prs{\lambda T}' = \lambda T'$
+לכל
+$\lambda \in \FF$.
+\item $\prs{ST}' = T' S'$
+לכל
+$S \in \Hom_\FF\prs{W,U}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{exercisechap}
+הוכיחו כי
+$\prs{\id_V}' = \id_{V'}$.
+\end{exercisechap}
+
+\begin{solution}
+יהי
+$\phi \in V'$.
+אז
+\begin{align*}
+\text{.} \prs{\id_V}'\prs{\phi} = \phi \circ \id_V = \phi = \id_{V'}\prs{\phi}
+\end{align*}
+\end{solution}
+
+\begin{exercisechap}
+תהי
+\begin{align*}
+T \colon \RR^3 &\to \RR^2 \\
+\pmat{x \\ y \\ z} &\mapsto \pmat{4x+5y+6z \\ 7x+8y+9z}
+\end{align*}
+ויהיו
+$\mcal{B} \coloneqq \prs{\psi_1, \psi_2, \psi_3}$
+הבסיס הדואלי לבסיס הסטנדרטי של
+$\RR^3$
+וגם
+$\mcal{C} \coloneqq \prs{\phi_1, \phi_2}$
+הדואלי לזה של
+$\RR^2$.
+
+\begin{enumerate}
+\item חשבו את הפונקציונלים הלינאריים
+$T'\prs{\phi_1}, T'\prs{\phi_2}$.
+
+\item חשבו את
+$\brs{T'\prs{\phi_1}}_\mcal{B}, \brs{T'\prs{\phi_2}}_\mcal{B}$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+יתווסף לרשימות בהמשך.
+%TODO
+\end{solution}
+
+\begin{exercisechap}
+יהי
+\begin{align*}
+T \colon \RR\brs{x} \to \RR\brs{x} \\
+p\prs{x} &\mapsto x^2 p\prs{x} + p''\prs{x}
+\end{align*}
+
+\begin{enumerate}
+\item יהי
+$\phi \in \RR\brs{x}'$
+המוגדר על ידי
+$\phi\prs{p} = p'\prs{4}$.
+חשבו את
+$T'\prs{\phi}$.
+
+\item יהי
+$\psi \in \RR\brs{x}'$
+המוגדר על ידי
+$\psi\prs{p} = \int_0^1 p\prs{x} \diff x$.
+חשבו את
+$\prs{T'\prs{\psi}}\prs{x^3}$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+יתווסף לרשימות בהמשך.
+%TODO
+\end{solution}
+
+\section{תת־מרחבים מאפסים}
+
+כדי לתאר תת־מרחב וקטורי
+$U \leq V$
+נוכל לכתוב את
+$U$
+כמרחב הנפרש על ידי וקטורים מ־%
+$V$,
+אך נוכל לחלופין לכתוב את
+$U$
+באמצעות שוויונים. למשל, הישר
+$\Span\prs{\pmat{1 \\ 1}}$
+ב־%
+$\RR^2$
+ניתן לכתיבה גם בתור
+\begin{align*}
+\set{\pmat{x \\ y}}{x = y}
+\end{align*}
+כאשר
+$x=y$.
+נוכל לכתוב את השוויון הזה בתור
+$x-y = 0$,
+והוקטורים המקיימים זאת הם בדיוק הגרעין של הפונקציונל
+$\phi\prs{\pmat{x \\ y}} = x-y$.
+
+\begin{definition}[מרחב מאפס]
+יהי
+$V$
+מרחב וקטורי ותהי
+$S \subseteq V$.
+\emph{המרחב המאפס}
+של
+$S$
+הוא
+\begin{align*}
+\text{.} S^0 \coloneqq \set{\phi \in V'}{\forall s \in S: \phi\prs{s} = 0}
+\end{align*}
+\end{definition}
+
+\begin{proposition}
+עבור
+$V$
+סוף־מימדי ועבור
+$U \leq V$
+מתקיים
+\begin{align*}
+\text{.} \dim\prs{U^0} = \dim\prs{V} - \dim\prs{U}
+\end{align*}
+\end{proposition}
+
+\begin{exercisechap}
+יהי
+$v = \pmat{a \\ b} \in \RR^2$.
+מיצאו את
+$\set{v}^0$.
+\end{exercisechap}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב וקטורי ותהיינה
+$S,T \subseteq V$.
+
+\begin{enumerate}
+\item הראו כי
+$T^0 \subseteq S^0$.
+
+\item הראו כי
+$S^0 = \prs{\Span\prs{S}}^0$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי ויהיו
+$U,W \leq V$
+עבורם
+$U \subseteq W$.
+הוכיחו כי
+$W^0 \subseteq U^0$.
+\end{exercisechap}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי ויהיו
+$U,W \leq V$.
+\begin{enumerate}
+\item הראו כי
+$\prs{U+W}^0 = U^0 \cap W^0$.
+\item הראו כי
+$\prs{U \cap W}^0 = U^0 + W^0$.
+\end{enumerate}
+\end{exercisechap}
 
 \part{מרחבי מכפלה פנימית}
 
