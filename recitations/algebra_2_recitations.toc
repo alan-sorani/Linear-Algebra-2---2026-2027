@@ -11,7 +11,7 @@
 \contentsline {chapter}{\numberline {3}פונקציונלים לינאריים והמרחב הדואלי}{20}{chapter.3}%
 \contentsline {section}{\numberline {3.1}פונקציונלים לינאריים}{20}{section.3.1}%
 \contentsline {section}{\numberline {3.2}אופרטורים על המרחב הדואלי}{23}{section.3.2}%
-\contentsline {section}{\numberline {3.3}תת־מרחבים מאפסים}{24}{section.3.3}%
-\contentsline {part}{II\hspace {1em}מרחבי מכפלה פנימית}{25}{part.2}%
-\contentsline {part}{III\hspace {1em}צורת ז'ורדן}{26}{part.3}%
-\contentsline {part}{IV\hspace {1em}אלגברה מולטילינארית}{27}{part.4}%
+\contentsline {section}{\numberline {3.3}תת־מרחבים מאפסים}{26}{section.3.3}%
+\contentsline {part}{II\hspace {1em}מרחבי מכפלה פנימית}{27}{part.2}%
+\contentsline {part}{III\hspace {1em}צורת ז'ורדן}{28}{part.3}%
+\contentsline {part}{IV\hspace {1em}אלגברה מולטילינארית}{29}{part.4}%
