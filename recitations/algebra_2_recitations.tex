@@ -2592,6 +2592,637 @@ $\prs{U \cap W}^0 = U^0 + W^0$.
 
 \part{מרחבי מכפלה פנימית}
 
+\chapter{מרחבי מכפלה פנימית}
+
+\section{מוטיבציה}
+
+נסתכל תחילה על המרחב הוקטורי
+$\mbb{R}^n$.
+כיוון שנוכל לחשוב על וקטורים ב־%
+$\mbb{R}^n$
+בתור נקודות במרחב, נוכל לחשוב על המרחק בין שני וקטורים
+$u,v \in \mbb{R}^n$,
+שנסמנו
+$d\prs{u,v}$.
+
+כדי לחשב מרחק כזה, נסתכל על האורך של הקטע המחבר בין
+$u,v$,
+וזה אותו אורך כמו של הקטע המחבר בין
+$0,u-v$.
+לכן,
+$d\prs{u,v} = d\prs{0,u-v}$.
+נקרא למרחק
+$d\prs{0,u-v}$
+\emph{האורך}
+של
+$u-v$,
+כיוון שזה האורך של הקו המחבר בין
+$0,u-v$,
+ונסמנו
+$\norm{u-v}$
+בדומה לסימון
+$\abs{z}$
+של ערך מוחלט ב־%
+$\mbb{C}$.
+נוכל להשתמש במשפט פיתגורס כדי לקבל כי
+\[\norm{\pmat{v_1 \\ \vdots \\ v_n}} = \sqrt{v_1^2 + \ldots + v_n^2}\]
+ולמשל מתקיים
+$\norm{\pmat{a\\b}} = \sqrt{a^2 + b^2} = \abs{a + ib}$.
+
+כשמדובר על גיאומטריה אוקלידית, מושג חשוב בנוסף למרחק ואורך הוא זה של זווית. נסתכל על שני וקטורים
+$u,v$
+באורך
+$1$
+ועל הישרים
+$\ell_u, \ell_v$
+שעוברים דרכם.
+הקוסינוס
+$\cos\prs{\alpha}$
+של הזווית מ־%
+$\ell_u$
+ל־%
+$\ell_v$
+שווה לאורך של הוקטור שהקצה שלו הוא החיתוך בין
+$\ell_u$
+לאנך מ־%
+$v$
+ל־%
+$\ell_u$.
+נסמן וקטור זה
+$\trs{v,u} u$,
+כיוון שהוא אכן כפולה של
+$u$
+מהיותו על
+$\ell_u$.
+במקרה זה נקרא לו
+\emph{ההטלה של
+$v$
+על
+$u$}.
+אז יתקיים
+\[\cos\prs{\alpha} = \trs{v,u}\]
+ולכן
+\[\text{.} \alpha = \acos\prs{\trs{v,u}}\]
+
+כדי להכליל את המושג של זווית, נכליל את הביטוי
+$\trs{v,u}$
+באמצעות ההגדרה הבאה, של מכפלה פנימית.
+
+\section{הגדרות}
+
+\begin{definition}[מכפלה פנימית]
+יהי
+$V$
+מרחב וקטורי מעל
+$\mbb{F} \in \set{\mbb{R}, \mbb{C}}$.
+\emph{מכפלה פנימית}
+על
+$V$
+היא פונקציה
+\begin{align*}
+\trs{\cdot,\cdot} \colon V \times V &\to \mbb{F}
+\end{align*}
+המקיימת את התכונות הבאות.
+\begin{description}
+\item[חיוביות:]
+לכל
+$v \in V \setminus \set{0}$
+מתקיים
+$\trs{v,v} \geq 0$.
+
+\item[סימטריות (הרמיטיות):]
+לכל
+$u,v \in V$
+מתקיים
+$\trs{u,v} = \overline{\trs{v,u}}$.
+
+\item[לינאריות ברכיב הראשון:]
+לכל
+$u,v \in V$
+ולכל
+$\alpha \in \mbb{F}$
+מתקיים
+\[\text{.}\trs{\alpha u + v, w} = \alpha\trs{u,w} + \trs{v,w}\]
+\end{description}
+
+מרחב וקטורי
+$V$
+יחד עם מכפלה פנימית
+$\trs{\cdot,\cdot}$
+נקרא
+\emph{מרחב מכפלה פנימית}.
+\end{definition}
+
+\begin{remark}
+בדוגמה מהמרחב האוקלידי, ניתן לראות שנובע מהדרישה הגיאומטרית שלנו כי
+\[\trs{u,v} = \sum_{i \in [n]} u_i v_i\]
+עבור
+$u,v \in \mbb{R}^n$
+מאורך
+$1$.
+נוכל בעצם להגדיר זאת עבור וקטור כללי, ונשים לב כי הדבר אכן מקיים את שלוש התכונות הדרושות, ולכן הינו מכפלה פנימית על
+$\mbb{R}^n$.
+
+מכפלה פנימית זאת נקראת
+\emph{המכפלה הפנימית הסטנדרטית}
+על
+$\mbb{R}^n$.
+\end{remark}
+
+\begin{exercisechap}
+קיבעו אלו מההעתקות הבאות הן מכפלות פנימיות.
+
+\begin{enumerate}
+\item
+\begin{align*}
+f_1 \colon \mbb{R}^3 \times \mbb{R}^3 \mbb{R} \\
+\prs{\pmat{a\\b\\c}, \pmat{x\\y\\z}} &\mapsto ax + by + \prs{cz}^2
+\end{align*}
+
+\item
+\begin{align*}
+f_2 \colon \mbb{R}^4 \times \mbb{R}^4 &\to \mbb{R} \\
+\prs{\pmat{a\\b\\c\\d}, \pmat{w\\x\\y\\z}} &\mapsto ax + by + cz 
+\end{align*}
+
+\item
+\begin{align*}
+f_3 \colon \mbb{C}^3 \times \mbb{C}^3 &\to \mbb{C} \\
+\prs{\pmat{a\\b\\c}, \pmat{x\\y\\z}} &\mapsto ax + by + cz
+\end{align*}
+
+\item
+\begin{align*}
+f_4 \colon \Mat_n\prs{\mbb{R}} \times \Mat_n\prs{\mbb{R}} &\to \mbb{R} \\
+\prs{A,B} &\mapsto \tr\prs{B^t A}
+\end{align*}
+
+\item
+\begin{align*}
+f_5 \colon \Mat_n\prs{\mbb{C}} \times \Mat_n\prs{\mbb{C}} &\to \mbb{C} \\
+\prs{A,B} &\mapsto \tr\prs{B^t A}
+\end{align*}
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+ההעתקה
+$f_1$
+אינה לינארית ברכיב הראשון, כי
+\[f_1\prs{\pmat{0\\0\\1}, \pmat{0\\0\\1}} = 1\]
+ואילו
+\[\text{.} f_1\prs{\pmat{0\\0\\2}, \pmat{0\\0\\1}} = 2^2 = 4 \neq 2 = 2 f_1\prs{\pmat{0\\0\\1}, \pmat{0\\0\\1}}\]
+
+\item
+ההעתקה
+$f_2$
+אינה חיובית, כי
+\[\text{.} f_2\prs{\pmat{0\\0\\0\\1}, \pmat{0\\0\\0\\1}} = 0 \leq 0\]
+
+\item
+ההעתקה
+$f_3$
+אינה הרמיטית, כי
+\[f_3\prs{\pmat{0\\0\\1}, \pmat{0\\0\\i}} = i\]
+ואילו
+\[\text{.} f_3\prs{\pmat{0\\0\\i}, \pmat{0\\0\\1}} = i \neq -i = \bar{i} = \overline{f_3\prs{\pmat{0\\0\\1}, \pmat{0\\0\\i}}}\]
+
+\item
+ההעתקה
+$f_4$
+היא אכן מכפלה פנימית.
+מתקיים כי
+\[\text{.} f_4\prs{A,B} = \sum_{i,j \in \brs{n}} a_{i,j} b_{i,j}\]
+אז
+$f$
+סימטרית כי
+\[ \text{,} \sum_{i,j \in \brs{n}} a_{i,j} b_{i,j} = \sum_{i,j \in \brs{n}} b_{i,j} a_{i,j} \]
+חיובית כי
+\[ \sum_{i,j \in \brs{n}} a_{i,j}^2 = 0 \]
+גורר כי
+$a_{i,j} = 0$
+לכל
+$i,j \in \brs{n}$,
+ולכן
+$A = 0$,
+ולינארית ברכיב הראשון כי עבור מטריצות
+$A_1, A_2, B \in \Mat_n\prs{\mbb{R}}$
+וסקלר
+$\alpha \in \mbb{R}$
+מתקיים
+\begin{align*}
+f\prs{\alpha A_1 + A_2, B}
+&=
+\sum_{i,j \in \brs{n}} \prs{\alpha \prs{A_1}_{i,j} + \prs{A_2}_{i,j}} b_{i,j}
+\\&=
+\alpha \sum_{i,j \in \brs{n}} \prs{A_1}_{i,j} + \sum_{i,j \in \brs{n}} \prs{A_2}_{i,j} b_{i,j}
+\\
+\hphantom{f\prs{\alpha A_1 + A_2, B}}
+&=
+\alpha f\prs{A_1, B} + f\prs{A_2, B}
+\end{align*}
+
+\item
+ההעתקה
+$f_5$
+אינה הרמיטית, כי
+$f_4\prs{I_n, iI_n} = \tr\prs{iI_n} = in$
+ואילו
+\[\text{.} f_4\prs{i I_n, I_n} = \tr\prs{iI_n} =in \neq \overline{in} = \overline{f_4\prs{I_n, iI_n}}\]
+\end{enumerate}
+\end{solution}
+
+\section{תכונות של מכפלות פנימיות, ונורמות}
+
+במרחב האוקלידי, כאשר
+$\norm{u} = \norm{v} = 1$,
+אמרנו שהערך
+$\abs{\trs{u,v}}$
+שווה לאורך של ההטלה של
+$v$
+על
+$u$
+(או להיפך, כי המכפלה הפנימית סימטרית).
+בפרט, אורך זה יכול להיות לכל היותר
+$1$,
+והינו שווה
+$1$
+אם ורק אם
+$u = v$,
+כי אחרת ההטלה תהיה קצרה יותר.
+
+ניעזר בלינאריות של המכפלה הפנימית ונקבל כי לוקטורים
+$u,v \in \mbb{R} \setminus \set{0}$
+כלליים מתקיים
+\begin{align*}
+\abs{\trs{u,v}} &= \trs{\norm{u} \frac{u}{\norm{u}}, \norm{v} \frac{v}{\norm{v}}}
+\\&=
+\norm{u} \norm{v} \abs{\trs{\frac{u}{\norm{u}}, \frac{v}{\norm{v}}}}
+\\&\leq \norm{u} \norm{v}
+\end{align*}
+כאשר
+$\abs{\trs{\frac{u}{\norm{u}}, \frac{v}{\norm{v}}}} \leq 1$
+כי הוקטורים
+$\frac{u}{\norm{u}}, \frac{v}{\norm{v}}$
+הינם מאורך
+$1$.
+
+אי־שוויון כזה מתקבל גם במרחב מכפלה פנימית כללי, כפי שקובע אי־שוויון קושי־שוורץ, אך לשם כך עלינו להגדיר מושג של אורך בהגדרה הבאה.
+
+\begin{definition}[נורמה]
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{F} \in \set{\mbb{R}, \mbb{C}}$.
+\emph{נורמה}
+על
+$V$
+היא פונקציה
+$\norm{\cdot} \colon V \to \mbb{R}$
+המקיימת את התכונות הבאות.
+
+\begin{description}
+\item[חיוביות:]
+לכל
+$v \in V \setminus \set{0}$
+מתקיים
+$\norm{v} > 0$.
+
+\item[הומוגניות:]
+לכל
+$v \in V$
+ולכל
+$\alpha \in \mbb{F}$
+מתקיים
+$\norm{\alpha v} = \abs{\alpha} \norm{v}$.
+
+\item[אי־שוויון המשולש:]
+לכל
+$u,v \in V$
+מתקיים
+$\norm{u+v} \leq \norm{u} + \norm{v}$.
+\end{description}
+
+מרחב וקטורי עם נורמה נקרא
+\emph{מרחב נורמי}.
+\end{definition}
+
+\begin{theorem}[נורמה המושרית ממכפלה פנימית]
+יהי
+$V$
+מרחב מכפלה פנימית.
+הפונקציה
+$\norm{v} = \sqrt{\trs{v,v}}$
+היא נורמה על
+$V$.
+נקרא לה
+\emph{הנורמה המושרית מהמכפלה הפנימית
+$\trs{\cdot,\cdot}$}.
+\end{theorem}
+
+\begin{definition}[וקטורים אורתוגונליים]
+יהי
+$V$
+מרחב מכפלה פנימית.
+וקטורים
+$u,v \in V$
+נקראים
+\emph{אורתוגונליים}
+אם
+מתקיים
+$\trs{u,v} = 0$.
+נסמן זאת לעתים בתור
+$u \perp v$.
+\end{definition}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\RR$,
+ויהיו
+$u,v \in V$.
+\begin{enumerate}
+\item הוכיחו כי
+\[\text{.} \trs{u+v, u-v} = \norm{u}^2 - \norm{v}^2\]
+\item הוכיחו כי אם
+$\norm{u} = \norm{v}$
+אז
+$u+v \perp u-v$.
+\item  הסיקו כי אלכסוני מעוין (מרובע שצעותיו שוות) מאונכים זה לזה.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+לפי סימטריה ולינאריות בשני הרכיבים של המכפלה הפנימית, מתקיים
+\begin{align*}
+\trs{u+v, u-v} &= \trs{u, u-v} + \trs{v, u-v}
+\\&= \trs{u,u} - \trs{u,v} + \trs{v,u} - \trs{v,v}
+\\&= \trs{u,u} - \trs{u,v} + \trs{u,v} - \trs{v,v}
+\\&= \trs{u,u} - \trs{v,v}
+\\&= \norm{u}^2 - \norm{v}^2
+\end{align*}
+ולכן מתקיים שוויון כנדרש.
+
+\item
+נניח כי
+$\norm{u} = \norm{v}$.
+אז מהסעיף הקודם מתקיים
+\begin{align*}
+\trs{u+v, u-v} = \norm{u}^2 - \norm{v}^2 = 0
+\end{align*}
+ולכן
+$u+v \perp u-v$
+לפי הגדרת ניצבות.
+
+\item נוכל לשים מעוין על
+$\RR^2$
+כך שאחד מקודקודיו על הראשית.
+ראו איור
+\ref{figure:rhombus-diagonals}.
+הקודקודים הסמוכים הינם נקודות ב־%
+$\RR^2$
+שמגדירות וקטורים
+$u,v$.
+כיוון שאורכי צלעות המעוין שווים, מתקיים
+$\norm{u} = \norm{v}$
+ולכן מהסעיף הקודם
+$u+v \perp u-v$.
+הקודקוד הרביעי נמצא על קצה
+$u+v$
+וקצה האלכסון היוצא מהראשית.
+האלכסון הנוסף מחבר בין
+$u,v$
+ולכן מקביל לוקטור
+$u-v$.
+מהסעיף הקודם נקבל כי
+$u+v \perp u-v$,
+וכיוון שאם עבור שלושה ישרים
+$\ell_1, \ell_2, \ell_3$
+מתקיים
+$\ell_1 \perp \ell_2$
+וגם
+$\ell_2, \ell_3$
+מקבילים אז
+$\ell_1 \perp \ell_3$,
+נקבל כי שני האלכסונים מאונכים בעצמם.
+
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\linewidth]{images/rhombus.pdf}
+	\caption{
+		אלכסוני המעויין ניצבים זה לזה.
+	}
+	\label{figure:rhombus-diagonals}
+\end{figure}
+\end{enumerate}
+\end{solution}
+
+\begin{theorem}[משפט פיתגורס]
+יהי
+$V$
+מרחב מכפלה פנימית ויהיו
+$u,v \in V$
+אורתוגונליים. אז
+\begin{align*}
+\text{.} \norm{u+v}^2 = \norm{u}^2 + \norm{v}^2
+\end{align*}
+\end{theorem}
+
+\begin{theorem}[אי־שוויון קושי־שוורץ]
+יהי
+$V$
+מרחב מכפלה פנימית. אז לכל
+$u,v \in V$
+מתקיים
+\[\abs{\trs{u,v}} \leq \norm{u} \cdot \norm{v}\]
+ושוויון מתקיים אם ורק אם
+$u,v$
+תלויים לינארית.
+\end{theorem}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב מכפלה פנימית, ויהיו
+$u_1, \ldots, u_n, v_1, \ldots, v_n \in V$.
+הראו שמתקיים
+\begin{align*}
+\text{.} \sum_{i = 1}^n \trs{u_i, v_i} \leq \sqrt{{\sum_{i = 1}^n \norm{u_i}^2}} \cdot \sqrt{\sum_{i=1}^n \norm{v_i}^2}
+\end{align*}
+\end{exercisechap}
+
+\begin{solution}
+נרצה לפרש את אגף שמאל בתור מכפלה פנימית.
+כיוון שהוא מזכיר את המכפלה הפנימית על
+$\mbb{R}^n$,
+רק עם וקטורים מ־%
+$V$
+במקום מספרים ב־%
+$\mbb{R}$,
+נרצה להגדיר מכפלה זאת על המרחב
+\[\text{.} V^n \coloneqq \set{\prs{v_1, \ldots, v_n}}{v_i \in V}\]
+זה אכן מרחב וקטורי עם חיבור וכפל בסקלר לפי כל קואורדינטה בנפרד, ונגדיר עליו מכפלה פנימית לפי
+\[\text{.} \trs{\prs{u_1, \ldots, u_n}, \prs{v_1, \ldots, v_n}} \coloneqq \sum_{i = 1}^n \trs{u_i, v_i}\]
+אם
+$v \coloneqq \prs{v_1, \ldots, v_n} \neq \prs{0, \ldots, 0}$,
+יש
+$v_j \neq 0$
+ולכן
+\[\text{,} \trs{v,v} \geq \trs{v_j, v_j} > 0\]
+לכון מתקיימת חיוביות.
+סימטריה ולינאריות ברכיב הראשון מתקיימות בכל רכיב בנפרד, ולכן גם בסך הכל.
+
+כעת, אי־שוויון קושי־שוורץ על
+$V^n$
+אומר לנו כי
+\begin{align*}
+\sum_{i = 1}^n \trs{u_i, v_i}
+&\leq
+\abs{\sum_{i = 1}^n \trs{u_i, v_i}}
+\\&=
+\abs{\trs{u,v}}
+\\&\leq
+\norm{u} \norm{v}
+\\&=
+\sqrt{\trs{u,u}} \cdot \sqrt{v,v}
+\\&=
+\sqrt{{\sum_{i = 1}^n \trs{u_i, u_i}}} \cdot \sqrt{\sum_{i=1}^n \trs{v_i, v_i}}
+\\\text{,}\hphantom{\sum_{i = 1}^n \trs{u_i, v_i}}&=
+\sqrt{{\sum_{i = 1}^n \norm{u_i}^2}} \cdot \sqrt{\sum_{i=1}^n \norm{v_i}^2}
+\end{align*}
+כנדרש.
+\end{solution}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב מכפלה פנימית מעל שדה
+$\FF$
+ויהיו
+$u,v \in V$.
+הוכיחו כי
+$\trs{u,v} = 0$
+אם ורק אם
+$\norm{u} \leq \norm{u + a v}$
+לכל
+$a \in \FF$.
+\end{exercisechap}
+
+\begin{solution}
+נחשוב על זה גיאומטרית. הערכים
+$\set{u + a v}{a \in \FF}$
+מגדירים ישר המתקבל מהזזת
+$\Span\prs{v}$
+על ידי הוספת הוקטור
+$u$.
+אם
+$u \perp v$,
+כל הוקטורים על הישר ארוכים יותר מ־%
+$u$.
+נוכל לראות זאת לפי פיתגורס:
+\begin{align*}
+\norm{u + \alpha v}^2 = \norm{u}^2 + \norm{\alpha v}^2 \geq \norm{u}^2
+\end{align*}
+ולכן
+$\norm{u + \alpha v} \geq \norm{u}$.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/line_orthogonal.pdf}
+        \caption{
+		כאשר
+		$u \perp v$,
+		הוקטור
+		$u$
+		הוא הקצר ביותר על
+		$\ell$.        
+        }
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/line_nonorthogonal.pdf}
+        \caption{
+		כאשר
+		$u \not\perp v$,
+		יש וקטורים קצרים יותר על
+		$\ell$,
+		כמו זה שניצב ל־%
+		$v$.        
+        }
+        \label{subfig:det_linearity_parallelogram}
+    \end{subfigure}
+    \caption{
+	וקטור
+	$u \in \RR^2$
+	והישר
+	$\ell \coloneqq \set{u + a v}{a \in \RR}$.    
+    }
+    \label{fig:det_parallelograms}
+\end{figure}
+
+אחרת, יש על הישר וקטור אחר מאורך קטן יותר מ־%
+$\norm{u}$,
+למשל זה שניצב לישר. נרצה לכתוב את
+$u$
+כסכום של כפולה של
+$v$
+שנסמנה
+$\alpha v$,
+ווקטור הניצב ל־%
+$v$
+שנסמנו
+$w$.
+אם
+$u = \alpha v + w$
+עבור וקטורים כאלו נקבל מפיתגורס כי
+\[\norm{u}^2 = \norm{\alpha v}^2 + \norm{w}^2 > \norm{w}^2\]
+ולכן
+$\norm{u} > \norm{w}$
+כנדרש.
+
+כדי למצוא
+$\alpha, w$
+כאלו,
+נסתכל על המכפלה הפנימית
+$\trs{u,v}$.
+אם
+$u = \alpha v + w$
+עבור
+$w \perp v$,
+מתקיים
+\begin{align*}
+\trs{u, v} &= \trs{\alpha v + w, v}
+\\&= \trs{\alpha v, v} + \cancelto{0}{\trs{w, v}}
+\\&= \alpha \trs{v,v}
+\end{align*}
+ונקבל כי
+\[\text{.} \alpha = \frac{\trs{u,v}}{\trs{v,v}} = \frac{\trs{u,v}}{\norm{v}^2}\]
+אז
+\begin{align*}
+w = u - \alpha v
+\end{align*}
+וזה אכן ניצב ל־%
+$v$
+כי
+\begin{align*}
+\trs{u - \alpha v, v} &= \trs{u,v} - \trs{\alpha v, v}
+\\&=
+\trs{u,v} - \trs{\frac{\trs{u,v}}{\trs{v,v}}, v}
+\\&=
+\trs{u,v} - \frac{\trs{u,v}}{\trs{v,v}} \trs{v,v}
+\\ \text{.} \hphantom{\trs{u - \alpha v, v}} &=
+\trs{u,v} - \trs{u,v}
+\end{align*}
+\end{solution}
+
 \part{צורת ז'ורדן}
 
 \part{אלגברה מולטילינארית}

@@ -1,0 +1,161 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}     
+            
+%BIBLIOGRAPHY
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
+\addbibresource{bibliography.bib} %Imports bibliography file
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 2 \\
+פונקציונלים לינאריים וההעתקה הדואלית
+\\
+\vspace{1cm}
+\large{תאריך הגשה: 20.11.2026}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\vspace{-15pt}
+
+\begin{exercise}
+יהי
+$V = \RR_5\brs{x}$
+ויהי
+$T \in \End_\RR\prs{V}$
+עם
+$\ker\prs{T'} = \Span\prs{\phi}$
+עבור
+$\phi \in V'$
+המוגדר על ידי
+$\phi\prs{p} = p\prs{8}$.
+הוכיחו כי:
+\begin{align*}
+\text{.} \im\prs{T} = \set{p \in V}{p\prs{8} = 0}
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי מעל שדה
+$\FF$
+ויהי
+$U \leq V$.
+תהי
+$i \colon U \to V$
+\emph{ההכלה}
+של
+$U$
+ב־%
+$V$,
+כלומר ההעתקה
+\begin{align*}
+i \colon U &\to V \\
+\text{.} \hphantom{lala} u &\mapsto u
+\end{align*}
+(בדרך כלל הכלה כזאת תסומן עם חץ אחר,
+$i \colon U \hookrightarrow V$)
+
+\begin{enumerate}
+\item הראו כי
+$ker\prs{i'} = U^0$.
+\item הוכיחו כי
+$\im\prs{i'} = U'$,
+כלומר כי
+$i'$
+על.
+\item הסיקו כי לכל
+$V_1, V_2$
+סוף־מימדיים מעל
+$\FF$
+ולכל
+$T \in \Hom\prs{V_1, V_2}$
+חד־חד ערכית מתקיים כי
+$T'$
+על.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי מעל שדה
+$\FF$.
+עבור
+$W \leq V'$
+נגדיר את
+\emph{התת־מרחב המתאפס}
+על ידי
+$W$
+בתור
+\[\text{.} W_0 \coloneqq \set{v \in V}{\forall \phi \in W: \phi\prs{v} = 0}\]
+
+נראה בתרגיל זה התאמה בין משוואות הכוללות פונקציונלים לינאריים על
+$V$
+לבין תת־מרחבים וקטוריים של
+$V$.
+
+\begin{enumerate}
+\item הראו כי לכל
+$W \leq V'$
+מתקיים
+\begin{align*}
+\text{.} \dim \prs{W_0} = \dim\prs{V} - \dim\prs{W}
+\end{align*}
+
+\textbf{רמז:}
+מיצאו העתקה לינארית
+$T \colon V \to \FF^{\dim\prs{W}}$
+שהיא על ושהגרעין שלה הוא
+$W_0$.
+
+\item הוכיחו כי לכל
+$U \leq V$
+מתקיים
+$\prs{U^0}_0 = U$.
+
+\textbf{הערה:}
+זה נכון גם אם
+$V$
+אינסוף מימדי. זה תרגיל קשה יותר אבל אתן יכולות לפתור אותו תוך כדי שימוש בכך שלכל מרחב וקטורי קיים בסיס (לאו דווקא סופי) כך שכל וקטור הוא צירוף לינארי של (מספר סופי של) איברי הבסיס. אם ההוכחה שלכן במימד סופי לא מסתמכת על שוויון מימדים, היא אמורה להתאים גם למקרה זה עם שינוי קל.
+
+\item הוכיחו כי לכל
+$W \leq V'$
+מתקיים
+$\prs{W_0}^0 = W$.
+
+\textbf{הערה:}
+זה לא נכון כאשר
+$V$
+אינסוף־מימדי. נסו למצוא דוגמה נגדית.
+\end{enumerate}
+\end{exercise}
+
+\end{document}
