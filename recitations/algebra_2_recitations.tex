@@ -3223,6 +3223,810 @@ $v$
 \end{align*}
 \end{solution}
 
+\section{בסיסים אורתונורמליים והמרחב הניצב}
+
+הגדרנו על מרחבי מכפלה פנימית נורמה, שהיא הכללה של אורך. בהינתן מושג של אורך, ניתן להגדיר מרחק בתור אורך הקו בין שתי נקודות. לכן נגדיר את המרחק בין שני וקטורים במרחק נורמי כאורך ההפרש בינם.
+
+\begin{definition}[מטריקה המושרית מנורמה]
+יהי
+$\prs{V,\norm{\cdot}}$
+מרחב נורמי.
+\emph{המטריקה המושרית}
+על
+$V$
+היא
+$d\prs{x,y} = \norm{x-y}$.
+\end{definition}
+
+כעת, את המרחק בין שני שני וקטורים קל בדרך כלל לחשב כאשר יש לנו נורמה נתונה. מעט מסובך יותר לחשב את המרחב מוקטור לקבוצה.
+
+\begin{definition}[מרחק מקבוצה]
+יהי
+$\prs{X,d}$
+מרחב מטרי, יהי
+$x \in X$
+ותהי
+$S \subseteq X$.
+נגדיר את
+\emph{המרחק של
+$x$
+מ־%
+$S$}
+להיות
+\begin{align*}
+\text{.} d\prs{x,S} \coloneqq \inf\set{d\prs{x,s}}{s \in S}
+\end{align*}
+\end{definition}
+
+תת־קבוצות של מרחב וקטורי שמעניינות אותנו הן בדרך כלל תת־מרחבים. במקרה האוקלידי, אנו יודעות כיצד לחשב את המרחק מתת־מרחב. כדי לחשב את
+$d\prs{x,W}$
+עבור
+$W \leq \mbb{R}^n$,
+נעביר אנך מ־%
+$x$
+ל־%
+$W$
+ונחשב את המרחק בין
+$x$
+ונקודת החיתוך בין
+$W$
+לאנך.
+
+במרחב מכפלה פנימית כללי, אותו רעיון יבוא לידי ביטוי על ידי כתיבת
+$x$
+בתור סכום של וקטור מ־%
+$W$
+ווקטור שניצב ל־%
+$W$,
+והמרחק יהיה האורך של הוקטור השני.
+
+\begin{definition}[מרחב ניצב]
+יהי
+$V$
+מרחב מכפלה פנימית, ותהי
+$S \subseteq V$.
+\emph{המרחב הניצב ל־%
+$S$}
+הוא
+\[\text{.} S^\perp = \set{v \in V}{\forall s \in S \colon v \perp s}\]
+\end{definition}
+
+\begin{proposition}
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$W \leq V$.
+מתקיים
+$V = W \oplus W^\perp$.
+\end{proposition}
+
+\begin{exercisechap}
+יהי
+$V$
+מרחב מכפלה פנימית סוף־מימדי ותהיינה
+$S,T \subseteq V$.
+
+\begin{enumerate}
+\item 
+נניח כי
+$S \subseteq T$.
+הראו כי
+$T^\perp \subseteq S^\perp$.
+
+\emph{התאמה כזאת, כמו $S \mapsto S^\perp$, שהופכת יחס הכלה, נקראת
+\emph{התאמת גלואה}.}
+
+\item
+נסמן
+$W = \Span\prs{S}$.
+הראו כי
+$S^\perp = W^\perp$.
+
+\item
+הראו כי
+$\prs{S^{\perp}}^\perp = \Span\prs{S}$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+יהי
+$v \in T^\perp$
+ויהי
+$s \in S$.
+אז
+$s \in T$
+כי
+$S \subseteq T$,
+ולכן
+$v \perp s$,
+כי
+$v$
+ניצב לכל וקטור ב־%
+$T$.
+לכן
+$v \in S^\perp$.
+
+\item
+מתקיים
+$S \subseteq W$
+ולכן
+$W^\perp \subseteq S^\perp$.
+יהי
+$v \in S^\perp$
+ויהי
+$w \in W$.
+כיוון ש־%
+$W = \Span\prs{S}$,
+יש איברים
+$s_1, \ldots, s_k$
+וסקלרים
+$\alpha_1, \ldots, \alpha_k$
+עבורם
+$w = \sum_{i \in [k]} \alpha_i s_i$.
+אז
+\[\trs{v,w} = \trs{v, \sum_{i \in [k]} \alpha_i s_i} = \sum_{i \in [k]} \alpha_i \cancelto{0}{\trs{v_i, s_i}} = 0\]
+ולכן
+$v \in W^\perp$.
+
+\item
+ראינו כי
+$\prs{W^\perp}^\perp = W$
+עבור
+$W \leq V$.
+ניקח
+$W = \Span\prs{S}$.
+מתקיים
+$S \subseteq W$
+ולכן
+$W^\perp \subseteq S^\perp$
+ואז
+$\prs{S^\perp}^\perp \subseteq \prs{W^\perp}^\perp = W$.
+כמו כן,
+$S^\perp = W^\perp$
+תת־מרחב וקטורי ומכיוון ש־%
+$V = S^\perp \oplus \prs{S^\perp}^\perp$,
+נקבל כי
+\[\dim\prs{\prs{S^\perp}^\perp} = \dim\prs{V} - \dim\prs{S^\perp} = \dim\prs{V} - \dim\prs{W^\perp} = \dim\prs{W}\]
+ולכן יש שוויון
+$\prs{S^\perp}^\perp = W = \Span\prs{S}$.
+\end{enumerate}
+\end{solution}
+
+\begin{remark}
+באופן כללי,
+\[\Span\prs{S} = \set{\sum_{i \in [k]} \alpha_i s_i}{\substack{\alpha_i \in \mbb{F} \\ s_i \in S}}\]
+גם כאשר
+$S$
+אינסופית.
+\end{remark}
+
+\begin{exercisechap}
+מצאו את
+$W^\perp$
+עבור
+\[\text{.} W \ceq \spn\prs{e_1 + e_2} \leq \mbb{R}^2\]
+\end{exercisechap}
+
+\begin{solution}
+ראינו כי מתקיים
+$v \in \Span\prs{e_1 + e_2}^\perp$
+אם ורק אם
+$v \perp e_1 + e_2$.
+זה מתקיים
+אם ורק אם
+$v_1 + v_2 = 0$
+אם ורק אם
+$v_2 = - v_1$.
+לכן
+\[\text{.} W^\perp = \spn\prs{e_1 - e_2}\]
+\end{solution}
+
+כעת, עבור
+$W \leq V$
+ווקטור
+$x \in V$,
+כדי לכתוב
+$x = w + u$
+עבור
+$w \in W, u \in W^\perp$
+נרצה נוסחה למציאת
+$u,w$.
+נעשה זאת בעזרת
+\emph{בסיס אורתונורמלי}
+של
+$W$.
+
+\begin{definition}[בסיס אורתונורמלי]
+יהי
+$V$
+מרחב מכפלה פנימית.
+בסיס
+$B = \prs{v_1, \ldots, v_n}$
+של
+$V$
+נקרא
+\emph{אורתוגונלי}
+אם
+$\trs{v_i, v_j} = 0$
+לכל
+$i \neq j$,
+ו%
+\emph{אורתונורמלי}
+אם
+$\trs{v_i, v_j} = \delta_{i,j} \coloneqq \fcases{0 & i \neq j \\ 1 & i=j}$.
+\end{definition}
+
+\begin{definition}[הטלה אורתוגונלית]
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$W \leq V$.
+\emph{ההטלה האורתוגונלית על
+$W$}
+שנסמנה
+$P_W$
+היא ההטלה על
+$W$
+ביחס לסכום הישר
+$V = W \oplus W^\perp$.
+
+כלומר, לכל
+$w \in W, u \in W^\perp$
+מתקיים
+$P_W\prs{w + u} = w$.
+\end{definition}
+
+\begin{proposition}
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$W \leq V$.
+יהי
+$B = \prs{w_1, \ldots, w_m}$
+בסיס
+\textbf{אורתונורמלי}
+של
+$W$
+ויהי
+$v \in V$.
+תהי
+$P_W$
+ההטלה האורתוגונלית על
+$W$.
+אז
+\[\text{.} P_W\prs{w} = \sum_{i \in [m]} \trs{v, w_i} w_i\]
+\end{proposition}
+
+כדי למצוא בסיסים אורתונורמליים ומשלימים ישרים, ניעזר בתהליך שלוקח בסיס כלשהו ומחזיר בסיס אורתונורמלי.
+
+\begin{theorem}[גרם־שמידט]
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$B = \prs{u_1, \ldots, u_n}$
+בסיס של
+$V$.
+קיים בסיס אורתונורמלי
+$\mcal{C} = \prs{v_1, \ldots, v_n}$
+של
+$V$
+עבורו
+\[\Span\prs{u_1, \ldots, u_i} = \Span\prs{v_1, \ldots, v_i}\]
+לכל
+$i \in \brs{n}$.
+\end{theorem}
+
+ניסוח זה של המשפט לא מתאר לנו איך למצוא את
+$C$,
+אבל ההוכחה שלו קונסטרוקטיבית ומתארת את האלגוריתם הבא.
+
+\begin{enumerate}
+\item
+עבור
+$i = 1$
+ניקח
+$v_i = \frac{u_i}{\norm{u_i}}$.
+
+\item
+עבור כל
+$i$
+לאחר מכן, לפי הסדר, ניקח
+\[w_i = u_i - \sum_{j \in \brs{i-1}} \trs{u_i, v_j}\]
+ואז
+$v_i = \frac{w_i}{\norm{w_i}}$.
+\end{enumerate}
+
+\begin{corollary}
+יהי
+$W \leq V$
+תת־מרחב במרחב מכפלה פנימית.
+כדי למצוא אורתונורמלי של
+$W$
+ושל
+$W^\perp$
+ניקח בסיס
+$\mcal{B}_W$
+של
+$W$
+ונשלים אותו לבסיס
+$\mcal{B} = \mcal{B}_W \cup \mcal{B}'_W$
+של
+$V$.
+נבצע את תהליך גרם־שמידט על
+$\mcal{B}$
+ונקבל בסיס
+$\mcal{C} = \mcal{C}_W \cup \mcal{C}_W^\perp$
+כך ש־%
+$\Span\prs{\mcal{C}_W} = \Span\prs{\mcal{B}_W} = W$.
+כל הוקטורים ב־%
+$\mcal{C}_W^\perp$
+ניצבים ל־%
+$W$
+כי
+$\mcal{C}$
+אורתונורמלי, ולכן
+$W' \coloneqq \Span\prs{\mcal{C}_W^\perp} \subseteq W^\perp$.
+כמו כן,
+\[\dim\prs{W'} = \dim\prs{V} - \dim\prs{W} = \dim\prs{W^\perp}\]
+כי
+$V = W \oplus W' = W \oplus W^\perp$,
+ולכן יש שוויון
+$W' = W^\perp$.
+\end{corollary}
+
+\begin{theorem}[מרחק של וקטור מתת־מרחב]
+יהי
+$V$
+מרחב מכפלה פנימית, יהי
+$W \leq V$,
+תהי
+$P_W$
+ההטלה האורתוגונלית על
+$W$
+ויהי
+$v \in V$.
+מתקיים
+\[\text{.} d\prs{v,W} = d\prs{v, P_W\prs{v}}\]
+\end{theorem}
+
+\begin{proof}
+ראינו בהרצאה שמתקיים
+$v - P_W\prs{v} \in W^\perp$.
+אז לכל
+$w \in W$
+מתקיים ממשפט פיתגורס
+\begin{align*}
+d\prs{v,w}^2 &= d\prs{w, P_W\prs{v}}^2 + d\prs{v, P_W\prs{w}}^2 \geq d\prs{v,p_W\prs{w}}^2
+\end{align*}
+ולכן
+\begin{align*}
+d\prs{v,w} \geq d\prs{v, P_W\prs{w}}
+\end{align*}
+כנדרש.
+\end{proof}
+
+\begin{exercisechap}
+יהי
+$V = \Mat_2\prs{\mbb{R}}$
+עם המכפלה הפנימית הסטנדרטית
+\[\trs{A,B} = \tr\prs{B^t A}\]
+ויהי
+$W \leq V$
+התת־מרחב של המטריצות הסימטריות.
+
+\begin{enumerate}
+\item מיצאו בסיס אורתונורמלי עבור
+$W$
+ועבור
+$W^\perp$.
+
+\item
+הראו כי
+$P_W\prs{A} = \frac{A + A^t}{2}$
+בשתי דרכים שונות.
+
+\item
+חשבו את המרחק של
+$A = \pmat{1 & 2 \\ 3 & 4}$
+מ־%
+$W$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item
+ניקח בסיס
+$\mcal{B}_W = \prs{E_{1,1}, E_{1,2} + E_{2,1}, E_{2,2}}$
+של
+$W$
+ונשלים אותו לבסיס
+\[B = \prs{u_1, u_2, u_3, u_4} = \prs{E_{1,1}, E_{1,2} + E_{2,1}, E_{2,2}, E_{1,2}}\]
+של
+$V$.
+נבצע את תהליך גרם־שמידט כדי לקבל בסיס אורתונורמלי
+$\prs{v_1, v_2, v_3, v_4}$
+עבורו
+$W = \Span\prs{v_1, v_2, v_3}$
+וגם
+$W^\perp = \Span\prs{v_4}$.
+
+נחשב
+\begin{align*}
+v_1 &= \frac{1}{\norm{E_{1,1}}} E_{1,1} = E_{1,1} \\
+w_2 &= u_2 - \trs{u_2,v_1} v_1 = E_{1,2} + E_{2,1} - 0 = E_{1,2} + E_{2,1} \\
+v_2 &= \frac{1}{\norm{w_2}} w_2 = \frac{1}{\sqrt{2}} \prs{E_{1,2} + E_{2,1}} \\
+w_3 &= u_3 - \trs{u_3, v_2} v_2 - \trs{u_3, v_1} v_1 = u_3 = E_{2,2} \\
+v_3 &= \frac{1}{\norm{w_3}} w_3 = E_{2,2} \\
+w_4 &= u_4 - \trs{u_4, v_3}v_3 - \trs{u_4, v_2}v_2 - \trs{u_4, v_1}v_1 \\&= E_{1,2} - \trs{E_{1,2}, \frac{1}{\sqrt{2}} \prs{E_{1,2} + E_{2,1}}} \prs{\frac{1}{\sqrt{2}} \prs{E_{1,2} + E_{2,1}}}
+\\&= E_{1,2} - \frac{1}{2} \prs{E_{1,2} + E_{2,1}}
+\\&= \frac{1}{2} \prs{E_{1,2} - E_{2,1}} \\
+v_4 &= \frac{w_4}{\norm{w_4}} = \frac{1}{\norm{E_{1,2} - E_{2,1}}} \prs{E_{1,2} - E_{2,1}} = \frac{1}{\sqrt{2}} \prs{E_{1,2} - E_{2,1}}
+\end{align*}
+ונקבל כי
+\[\prs{v_1, v_2, v_3} = \prs{E_{1,1}, \frac{1}{\sqrt{2}} \prs{E_{1,2} + E_{2,1}}, E_{2,2}}\]
+בסיס אורתונורמלי של
+$W$
+וכי
+$\frac{1}{\sqrt{2}} \prs{E_{1,2} - E_{2,1}}$
+בסיס אורתונורמלי של
+$W^\perp$.
+אז,
+$W^\perp$
+מרחב המטריצות האנטיסימטריות.
+
+\item
+בדרך אחת, זכור לנו מאלגברה א' כי
+\[A = \frac{A + A^t}{2} + \frac{A - A^t}{2}\]
+כאשר
+$\frac{A + A^t}{2}$
+סימטרית ו־%
+$\frac{A - A^t}{2}$
+אנטי־סימטרית.
+אז
+$\frac{A + A^t}{2} \in W$
+וכיוון ש־%
+$W^\perp$
+מרחב המטריצות האנטיסימטריות, נקבל גם
+$\frac{A - A^t}{2} \in W^\perp$.
+לכן
+$P_W\prs{A} = \frac{A + A^t}{2}$.
+
+אבל, במקרה הכללי, לא נדע מראש איך לכתוב וקטור
+$v \in V$
+בתור סכום של וקטור ב־%
+$W \leq V$
+ווקטור ב־%
+$W^\perp$.
+כדי לחשב את ההטלה
+$P_W\prs{A}$
+נוכל לקחת בסיס אורתונורמלי של
+$W$
+ולהשתמש בנוסחא עבור ההטלה האורתוגונלית לפי בסיס כזה.
+
+אכן,
+\begin{align*}
+P_W\prs{A} &= \sum_{i \in [3]} \trs{A, v_i} v_i \\&= \trs{A, E_{1,1}} E_{1,1} + \trs{A, \frac{1}{\sqrt{2}} \prs{E_{1,2} + E_{2,1}}} \cdot \frac{1}{\sqrt{2}} \prs{E_{1,2} + E_{2,1}} + \trs{A, E_{2,2}}, E_{2,2}
+\\&=
+a_{1,1} E_{1,1} + \frac{1}{2} \prs{a_{1,2} + a_{2,1}} \prs{E_{1,2} + E_{2,1}} + a_{2,2} E_{2,2}
+\\&=
+\pmat{a_{1,1} & \frac{a_{1,2} + a_{2,1}}{2} \\ \frac{a_{1,2} + a_{2,1}}{2} & a_{2,2}}
+\\ \text{.} \hphantom{P_W\prs{A}} &=
+\frac{A + A^t}{2}
+\end{align*}
+
+\item
+נכתוב את
+$A$
+בתור סכום של מטריצה סימטרית ואנטי־סימטרית. ראינו כי
+\[A = \frac{A + A^t}{2} + \frac{A - A^t}{2}\]
+כאשר
+$\frac{A + A^t}{2}$
+סימטרית ו־%
+$\frac{A - A^t}{2}$
+אנטי־סימטרית.
+אז
+$d_W\prs{A} = \frac{A+A^t}{2}$
+ונקבל כי
+המרחק של
+$A$
+מ־%
+$W$
+הוא
+\[\text{.} d\prs{A, \frac{A + A^t}{2}} = \norm{A - \frac{A + A^t}{2}}\]
+מתקיים
+\begin{align*}
+\norm{A - \frac{A + A^t}{2}} &= \norm{\frac{A - A^t}{2}}
+\\&= \frac{1}{2} \norm{\pmat{0 & -1 \\ & 1 & 0}}
+\\&= \frac{1}{2} \cdot \sqrt{2}
+\\&= \frac{1}{\sqrt{2}}
+\end{align*}
+ולכן
+$d\prs{A, W} = \frac{1}{\sqrt{2}}$.
+\end{enumerate}
+\end{solution}
+
+\section{משפט ההצגה של ריס}
+
+\begin{theorem}[משפט ההצגה של ריס]
+יהי
+$V$
+מרחב מכפלה פנימית. לכל
+$v \in V$
+נסמן
+\begin{align*}
+h_v \colon V &\to V \\
+\text{.} \hphantom{lalala} w &\mapsto \trs{w,v}
+\end{align*}
+אז ההעתקה
+\begin{align*}
+H^V \colon V &\to V^* \\
+v &\mapsto h_v
+\end{align*}
+הינה איזומורפיזם לינארי.
+\end{theorem}
+
+\begin{corollary}[ניסוח קונרקטי למשפט ההצגה של ריס]
+יהי
+$V$
+מרחב מכפלה פנימית סוף־מימדי מעל שדה
+$\mbb{F}$,
+ויהי
+$\phi \in V^*$
+פונקציונל לינארי על
+$V$.
+קיים וקטור
+$w \in V$
+יחיד עבורו
+$\phi\prs{v} = \trs{v,w}$
+לכל
+$v \in V$.
+
+בנוסף, אם
+$B = \prs{v_1, \ldots, v_n}$
+בסיס אורתונורמלי של
+$V$,
+מתקיים
+\[\text{.} w = \sum_{i \in \brs{n}} \trs{w, v_i} v_i = \sum_{i \in \brs{n}} \overline{\phi\prs{v_i}} v_i\]
+\end{corollary}
+
+\begin{exercisechap}
+יהי
+$V = \Mat_n\prs{\mbb{C}}$
+ותהי
+$\tr \colon V \to \mbb{C}$
+העתקת העקבה.
+מיצאו מטריצה
+$B$
+עבורה
+$\tr\prs{A} = \trs{A,B}$
+לכל
+$A \in V$.
+\end{exercisechap}
+
+\begin{solution}
+נסתכל על הבסיס האורתונורמלי
+$\prs{E_{i,j}}_{i,j \in \brs{n}}$
+של
+$V$
+וניעזר בנוסחא. נקבל
+\[\text{.} B = \sum_{i,j \in \brs{n}} \overline{\tr\prs{E_{i,j}}} E_{i,j} = \sum_{i \in \brs{n}} E_{i,i} = I_n\]
+\end{solution}
+
+\begin{exercisechap}
+\begin{enumerate}
+\item הוכיחו כי לכל
+$n \in \mbb{N}$
+קיים
+$C > 0$
+כך שלכל
+$p \in \mbb{R}_n\brs{x}$
+מתקיים
+\[\text{.} \abs{p\prs{0}} \leq C \prs{\int_{-1}^1 p\prs{x}^2 \diff x}^{\frac{1}{2}}\]
+
+\item חשבו את
+$C$
+המינימלי עבור
+$n=2$.
+\end{enumerate}
+\end{exercisechap}
+
+\begin{solution}
+\begin{enumerate}
+\item נשים לב כי
+\[\trs{f,g} = \int_{-1}^1 f\prs{x} g\prs{x} \diff x\]
+מכפלה פנימית.
+אז
+\begin{align*}
+\text{.} \prs{\int_{-1}^1 p\prs{x}^2 \diff x}^{\frac{1}{2}} = \pmat{\trs{p,p}}^{\frac{1}{2}} = \norm{p}
+\end{align*}
+כלומר, עלינו להוכיח
+\[\text{.} \abs{p\prs{0}} \leq C\norm{p}\]
+
+ההצבה
+\begin{align*}
+\ev_0 \colon \mbb{R}_n\brs{x} &\to \mbb{R} \\
+f &\mapsto f\prs{0}
+\end{align*}
+היא פונקציונל לינארי, ולכן ממשפט ריס יש
+$g \in \mbb{R}_n\brs{x}$
+עבורו
+\[\text{.} p\prs{0} = \ev_0\prs{p} = \trs{p,g}\]
+עכשיו, מקושי־שוורץ
+\[\text{.} \abs{p\prs{0}} = \abs{\trs{p,g}} \leq \norm{p} \norm{g}\]
+לכן ניקח
+$C = \norm{g}$.
+
+\item
+נסמן
+$g\prs{x} = ax^2 + bx + c$.
+נשים לב כי
+כאשר
+$p = g$
+יש שוויון בקושי־שוורץ ואז
+\[\text{.} \abs{p\prs{0}} = \norm{p}\norm{g} \leq C\norm{p}\]
+גורר
+$C \geq \norm{g}$.
+ראינו כי
+$C = \norm{g}$
+מקיים את הנדרש, ולכן נותר למצוא את
+$\norm{g}$.
+
+כדי לא להצטרך בסיס אורתונורמלי, שיהיה פחות יפה במקרה הזה, נשים לב שמספיק לחשב את המכפלות הפנימיות בין
+$g$
+לאיברי בסיס כלשהו.
+לפי בסיס אורתונורמלי
+$B = \prs{v_1, \ldots, v_n}$
+מתקיים
+\[\text{.} g = \sum_{i \in \brs{n}} \trs{g, v_i} v_i\]
+אם
+$C = \prs{u_1, \ldots, u_n}$
+בסיס נוסף, נוכל לכתוב
+\[v_i = \sum_{j \in \brs{n}} \alpha_{i,j} u_j\]
+ואז
+\[\text{,} g = \sum_{i \in \brs{n}} \trs{g, v_i} v_i = \sum_{i,j \in \brs{n}} \bar{\alpha}_{i,j} \trs{g, u_j}\]
+ונקבל שמהכפלות הפנימיות
+$\trs{g, u_i}$
+נותנות מספיק אינפורמציה כדי למצוא את
+$g$.
+
+כעת, נחשב את המכפלות הפנימיות של
+$g$
+עם איברי הבסיס הסטנדרטי ונפתור מערכת משוואות שיהיה לה פתרון יחיד שהוא מקדמי
+$g$.
+\begin{align*}
+1 &= 1\prs{0} = \trs{g\prs{x},1} = \int_{-1}^1 g\prs{x} \diff x = \left. \frac{ax^3}{3} + \frac{bx^2}{2} + cx \right|_{x=-1}^1 = \frac{2a}{3} + 2c \\
+0 &= x\prs{0} = \trs{g\prs{x}, x} = \int_{-1}^1 g\prs{x} x \diff x = \left. \frac{ax^4}{4} + \frac{bx^3}{3} + \frac{cx^2}{2} \right|_{x=-1}^1 = \frac{2b}{3} \\
+\text{.} 0 &= x^2\prs{0} = \trs{g\prs{x}, x^2} = \int_{-1}^1 g\prs{x} x^2 \diff x = \left. \frac{ax^5}{5} + \frac{bx^4}{4} + \frac{cx^3}{3} \right|_{x=-1}^1 = \frac{2a}{5} + \frac{2c}{3}
+\end{align*}
+מהמשוואה השנייה נקבל
+$b = 0$.
+מהמשוואה הראשונה פחות
+$3$
+פעמים השנייה נקבל
+\[1 = \frac{2a}{3} - 3 \cdot \frac{2a}{5} + 0 = \frac{10a - 18a}{15}\]
+ולכן
+$a = -\frac{15}{8}$.
+אז מהמשוואה השלישית נקבל
+\[c = -\frac{3a}{5} = -\frac{9}{8}\]
+ולכן
+\[\text{.} g\prs{x} = -\frac{15}{8} x^2 - \frac{9}{8}\]
+
+אז
+\[\text{.} C = \norm{g} = \sqrt{\int_{-1}^1 \prs{-\frac{15}{8} x^2 - \frac{9}{8}}^2} \diff x = \frac{27}{4}\]
+\end{enumerate}
+\end{solution}
+
+\begin{exercisechap}
+יהי
+$V = \mcal{C}\brs{-1, 1}$
+המרחב הוקטורי של הפונקציות הרציפות
+$\brs{-1, 1} \to \RR$
+עם המכפלה הפנימית
+\begin{align*}
+\text{.} \trs{f,g} = \int_{-1}^1 f\prs{x} g\prs{x} \diff x
+\end{align*}
+יהי
+$\mathrm{ev}_0 \in V^*$
+המוגדר על ידי
+$\mathrm{ev}_0\prs{f} = f\prs{0}$.
+
+הוכיחו שלא קיים
+$g \in V$
+עבורו
+$\mathrm{ev}_0\prs{f} = \trs{f,g}$
+לכל
+$f \in V$.
+\end{exercisechap}
+
+\begin{solution}
+נניח בדרך השלילה כי קיים
+$g \in V$
+עבורו
+$\mathrm{ev}_0\prs{f} = \trs{f,g}$
+לכל
+$f \in V$.
+
+נשים לב כי אם
+$g \equiv 0$
+אז
+\[f\prs{0} = \trs{f,g} = \trs{f,0} = 0\]
+לכל
+$f \in V$,
+בסתירה.
+נשים לב אז כי
+\begin{align*}
+g\prs{0} = \trs{g,g} > 0
+\end{align*}
+מחיוביות המכפלה הפנימית.
+אז מרציפות קיים
+$N \in \NN$
+כך שלכל
+$n \geq N$
+מתקיים
+$\left. g \right|_{\brs{-\frac{1}{n}, \frac{1}{n}}} > 0$.
+
+נרצה להסתכל על המכפלה הפנימית של
+$g$
+עם פונקציות
+$f_n$
+המתאפסות מחוץ לסביבות הולכות וקטנות של
+$0$,
+ושיש לכולן אותו ערך באפס. כיוון ש־%
+$g$
+חסומה, המכפלות הפנימיות
+$\trs{f_n, g}$
+ישאפו לאפס, מה שסותר את
+$1 = f_n\prs{0} = \trs{f_n, g}$.
+
+לכל
+$n \in \NN$
+נגדיר
+\begin{align*}
+f_n\prs{x} = \fcases{
+\prs{1-\prs{xn}^2}^2 & x \in \brs{-\frac{1}{n}, \frac{1}{n}} \\
+0 & x \notin \brs{-\frac{1}{n}, \frac{1}{n}}
+}
+\end{align*}
+ואז מתקיים
+$0 \leq f_n\prs{x} \leq 1$
+לכל
+$n \in \NN$
+ו־%
+$x \in \brs{-1,1}$,
+וגם
+$f_n\prs{0} = 1$.
+נקבל כי לכל
+$n \in \NN$
+מתקיים
+\begin{align*}
+1 &= f\prs{0}
+\\&= \int_{-1}^1 f\prs{x} g\prs{x} \diff x
+\\&= \int_{-\frac{1}{n}}^{\frac{1}{n}} f\prs{x} g\prs{x} \diff x 
+\\&\leq \int_{-\frac{1}{n}}^{\frac{1}{n}} g\prs{x} \diff x
+\end{align*}
+אבל
+$g$
+רציפה בקטע סגור ולכן חסומה לפי משפט וייארשטראס. אז קיים
+$M \in \RR$
+עבורו
+$g \leq M$,
+ואז
+\begin{align*}
+1 \leq \int_{-\frac{1}{n}}^{\frac{1}{n}} g\prs{x} \diff x \leq \int_{-\frac{1}{n}}^{\frac{1}{n}} M \diff x = \frac{2 M}{n}
+\end{align*}
+לכל
+$n \in \NN$,
+כלומר
+$M \geq \frac{n}{2}$
+לכל
+$n \in \NN$,
+בסתירה לכך שזה לא יתכן לאף
+$M \in \RR$.
+\end{solution}
+
 \part{צורת ז'ורדן}
 
 \part{אלגברה מולטילינארית}

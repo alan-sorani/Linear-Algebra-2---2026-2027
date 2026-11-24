@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.29)  17 NOV 2026 10:13
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2) (preloaded format=xelatex 2026.3.29)  24 NOV 2026 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2033,13 +2033,41 @@ File: images/line_orthogonal.pdf Graphic file (type pdf)
 <use images/line_orthogonal.pdf>
 File: images/line_nonorthogonal.pdf Graphic file (type pdf)
 <use images/line_nonorthogonal.pdf>
- [32] [33] [34
+ [32]
+Overfull \hbox (8.23172pt too wide) in paragraph at lines 3231--3239
+[][][]\TU/Calibri(0)/m/n/10 יהי $[]$ מרחב נורמי. \TU/Calibri(0)/m/it/10 המטריקה
+ המושרית \TU/Calibri(0)/m/n/10 על $\OML/cmm/m/it/10 V$ \TU/Calibri(0)/m/n/10 הי
+א $\OML/cmm/m/it/10 d [] \OT1/cmr/m/n/10 = []$\TU/Calibri(0)/m/n/10 . []
+ []
 
-] [35
+[33] [34]
+Package hyperref Info: bookmark level for unknown corollary defaults to 0 on in
+put line 3542.
+
+Overfull \hbox (0.7929pt too wide) in paragraph at lines 3580--3591
+[][][]\TU/Calibri(0)/m/it/10 יהי $\OML/cmm/m/it/10 V$ \TU/Calibri(0)/m/it/10 מר
+חב מכפלה פנימית, יהי $\OML/cmm/m/it/10 W \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 
+V$\TU/Calibri(0)/m/it/10 , תהי $\OML/cmm/m/it/10 P[]$ \TU/Calibri(0)/m/it/10 הה
+טלה האורתוגונלית[]
+ []
+
+Package hyperref Info: bookmark level for unknown proof defaults to 0 on input 
+line 3595.
+[35]
+Overfull \hbox (21.88327pt too wide) in paragraph at lines 3669--3679
+[]\TU/Calibri(0)/m/n/10 בסיס אורתונורמלי של $\OML/cmm/m/it/10 W$ \TU/Calibri(0)
+/m/n/10 וכי $[] []$ בסיס אורתונורמלי של $\OML/cmm/m/it/10 W[]$\TU/Calibri(0)/m/
+n/10 . אז, $\OML/cmm/m/it/10 W[]$ \TU/Calibri(0)/m/n/10 מרחב המטריצות האנטיסימט
+ריות. []
+ []
+
+[36] [37] [38] [39] [40
+
+] [41
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 3230.
+LaTeX Warning: Empty bibliography on input line 4034.
 
 \tf@thm=\write8
 \openout8 = `algebra_2_recitations.thm'.
@@ -2054,18 +2082,18 @@ L3 programming layer <2026-01-19>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `algebra_2_recitations.out' has not changed.
-(rerunfilecheck)             Checksum: EC5288C237707ACCE5FFB7E699832966;4189.
+(rerunfilecheck)             Checksum: 7995A90B5591792F64F2038911E55282;4699.
 Package logreq Info: Writing requests to 'algebra_2_recitations.run.xml'.
 \openout1 = `algebra_2_recitations.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44078 strings out of 402983
- 929733 string characters out of 5448068
- 1988921 words of memory out of 5000000
- 72097 multiletter control sequences out of 15000+600000
+ 44086 strings out of 402983
+ 929904 string characters out of 5448068
+ 1989453 words of memory out of 5000000
+ 72105 multiletter control sequences out of 15000+600000
  637444 words of font info for 120 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 117i,19n,121p,1233b,3798s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,20n,121p,1233b,3798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on algebra_2_recitations.pdf (37 pages).
+Output written on algebra_2_recitations.pdf (43 pages).
